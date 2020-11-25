@@ -1,0 +1,86 @@
+
+% スタイルファイルの指定
+% パッケージを使用する場合，ここで全て指定する．
+\documentstyle[cite,a4j,twoside,12pt,enumerate,graphicx,listings,amssymb,subcaption,amsmath]{jbmdthesis}
+
+% ヘッダを追加する
+\pagestyle{headings}
+
+% 画像元のパスの追加
+\graphicspath{{figure/}}
+
+\begin{document}
+
+% 図，表，節などを参照するためのコマンドを定義
+% これらのコマンドの使い方は template/ 内の Readme.md を参照すること
+\newcommand{\fig}[1]{{図~\ref{fig:#1}}}
+\newcommand{\subfig}[2]{{図~\ref{fig:#1}}~{(\subref{fig:#2})}}
+\newcommand{\tab}[1]{{表~\ref{tab:#1}}}
+\newcommand{\refchap}[1]{第{\ref{sec:#1}~章}}
+\newcommand{\refsec}[1]{{\ref{sec:#1}~節}}
+
+% ページ番号をアラビア数字にする(0,1,2,..)
+\pagenumbering{roman}
+
+
+% ---------- ユーザ入力ここから ----------
+% タイトルページの情報
+\title{\bf 容量効率を意識したソース・タグ値に基づくセグメント化による \\
+発行キューの電力削減}
+\author{\bf 森　健一郎}
+\date{3} % 令和~年
+
+% 表紙を出力（自分の所属に応じてコメントを外す）
+\minfotitle   % 修論
+% \belectitle   % 卒論
+% ---------- ユーザ入力ここまで ----------
+
+
+
+% 概要を出力
+{ 
+  % 目次に影響がでないように， 
+  % setlength のスコープを abstract 内だけに限定するためのブロック
+
+  % 行間の調整
+  \setlength{\baselineskip}{2.2em}
+  \include{src/abstract}
+}
+
+% 目次を出力
+\tableofcontents
+
+% ページ番号のリセット
+\clearpage 
+\pagenumbering{arabic}
+
+% 行間の調整（これ以降ずっとこの行間）
+\setlength{\baselineskip}{2.2em}
+
+
+
+% ---------- ユーザ入力ここから ----------
+% 各章の記述
+\include{src/introduction}
+\include{src/miss_assumed_pipeline}
+
+% \include{src/related_work}
+\include{src/summary}
+
+
+% 付録（必要に応じてコメントを外したり，新たに追加する）
+% \appendix
+% \include{src/appendix1}
+
+% 発表実績（なければコメントアウトしておく）
+\include{src/publication}
+% 謝辞
+\include{src/acknowledgement}
+% ---------- ユーザ入力ここまで ----------
+
+
+% 参考文献
+\bibliographystyle{IEEEtran} 
+\bibliography{ref}
+
+\end{document}

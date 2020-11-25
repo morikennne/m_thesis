@@ -1,0 +1,95 @@
+% titlepage.sty  27 Jan 85
+\def\maketitle{\begin{titlepage}
+\let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
+\null
+\vfil
+\vskip 60pt \begin{center}
+{\LARGE \@title \par} \vskip 3em {\large \lineskip .75em
+\begin{tabular}[t]{c}\@author 
+\end{tabular}\par} 
+\vskip 1.5em {\large \@date \par} \end{center} \par
+\@thanks
+\vfil
+\null
+\end{titlepage}
+\setcounter{footnote}{0} \let\thanks\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\maketitle\relax} 
+\def\abstract{\titlepage
+\null\vfil
+{\bf 概 要}\par}
+\def\endabstract{\par\vfil\null\endtitlepage}
+
+\def\bmdmaketitle{\begin{titlepage}
+\setcounter{page}{0}
+\null
+\vfil
+\vskip 125pt \hskip 80pt \begin{minipage}[t]{13.0cm}
+\begin{center}
+{\LARGE\bf \@title \par}
+\end{center} \par 
+\end{minipage} \par
+\vskip 280pt \hskip 80pt
+{\huge\bf \@date \par}
+\vskip 50pt \hskip 150pt
+{\huge\bf
+\begin{tabular}[t]{c}\@author
+\end{tabular}\par} 
+\vfil
+\null
+\end{titlepage}\par}
+
+\def\belectitle{\begin{titlepage}
+\setcounter{page}{0}
+\null
+\vspace{-2.0cm}
+\begin{center}
+{\LARGE\bf 卒業論文 \par}
+\end{center} \par
+\vspace{1.5cm}\hspace{1.2cm}
+\begin{minipage}[t]{13.0cm}
+\begin{center}
+{\LARGE\bf \@title \par} 
+\end{center} \par
+\end{minipage} \par
+\vspace{12.0cm}\hspace{2.0cm}
+\begin{minipage}[t]{12cm}
+\begin{center}
+{\Large\bf
+令和 \@date 年 3月 \par
+電気電子情報工学科 \par}
+\end{center}
+\hspace{4cm} {\huge\bf
+\begin{tabular}[t]{c}\@author 
+\end{tabular}\par}
+\end{minipage} \par
+\vfil
+\null
+\end{titlepage}\par}
+
+\def\minfotitle{\begin{titlepage}
+\setcounter{page}{0}
+\null
+\vspace{-2.0cm}
+\begin{center}
+{\Large\bf
+名古屋大学大学院工学研究科博士前期課程\par
+修士学位論文 \par}
+\end{center} \par
+\vspace{1.5cm}\hspace{1.2cm}
+\begin{minipage}[t]{13.0cm}
+\begin{center}
+{\LARGE\bf \@title \par} 
+\end{center} \par
+\end{minipage} \par
+\vspace{12.0cm}\hspace{2.0cm}
+\begin{minipage}[t]{12cm}
+{\Large\bf
+令和 \@date 年 3月 \par
+情報・通信工学専攻 \par}
+\hspace{4cm} {\huge\bf
+\begin{tabular}[t]{c}\@author 
+\end{tabular}\par}
+\end{minipage} \par
+\vfil
+\null
+\end{titlepage}\par}

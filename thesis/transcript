@@ -1,0 +1,190 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: src/abstract.aux
+A level-1 auxiliary file: src/introduction.aux
+A level-1 auxiliary file: src/miss_assumed_pipeline.aux
+A level-1 auxiliary file: src/summary.aux
+A level-1 auxiliary file: src/publication.aux
+A level-1 auxiliary file: src/acknowledgement.aux
+The style file: IEEEtran.bst
+Database file #1: ref.bib
+Warning--I didn't find a database entry for "Ranganathan1998"
+Warning--I didn't find a database entry for "Vaidya2008"
+Warning--I didn't find a database entry for "Ferdman2012"
+Warning--I didn't find a database entry for "Zhu2015"
+Warning--I didn't find a database entry for "Chadha2014"
+Warning--I didn't find a database entry for "Ayers2019"
+Warning--I didn't find a database entry for "Reinman1999"
+Warning--I didn't find a database entry for "Ferdman2008"
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 8 warnings)
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex)
+ \write18 enabled.
+entering extended mode
+(./main.tex
+pLaTeX2e <2017/10/28>+4 (based on LaTeX2e <2017-04-15>)
+Babel <3.18> and hyphenation patterns for 26 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/platex/base/pl209.def
+Entering pLaTeX 2.09 compatibility mode.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latex209.def
+
+          Entering LaTeX 2.09 COMPATIBILITY MODE
+ *************************************************************
+    !!WARNING!!    !!WARNING!!    !!WARNING!!    !!WARNING!!   
+ 
+ This mode attempts to provide an emulation of the LaTeX 2.09
+ author environment so that OLD documents can be successfully
+ processed. It should NOT be used for NEW documents!
+ 
+ New documents should use Standard LaTeX conventions and start
+ with the \documentclass command.
+ 
+ Compatibility mode is UNLIKELY TO WORK with LaTeX 2.09 style
+ files that change any internal macros, especially not with
+ those that change the FONT SELECTION or OUTPUT ROUTINES.
+ 
+ Therefore such style files MUST BE UPDATED to use
+          Current Standard LaTeX: LaTeX2e.
+ If you suspect that you may be using such a style file, which
+ is probably very, very old by now, then you should attempt to
+ get it updated by sending a copy of this error message to the
+ author of that file.
+ *************************************************************
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/tracefnt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty))
+(/usr/share/texlive/texmf-dist/tex/platex/base/ptrace.sty)) (./jbmdthesis.sty
+Document Style `jmyreport'. <18 Dec 88>
+(./jmyrep12.sty) (./mytitlepage.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty) (./a4j.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)) (./main.aux
+(./src/abstract.aux) (./src/introduction.aux) (./src/miss_assumed_pipeline.aux)
+(./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
+(./src/abstract.tex) [1] (./main.toc) [2] (./src/introduction.tex
+第 1章
+
+LaTeX Warning: Citation `Ranganathan1998' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Vaidya2008' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Ferdman2012' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Zhu2015' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Chadha2014' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Ferdman2012' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Ayers2019' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Reinman1999' on page 1 undefined on input line 8.
+
+
+LaTeX Warning: Citation `Ferdman2008' on page 1 undefined on input line 8.
+
+
+Underfull \vbox (badness 2165) has occurred while \output is active [1]
+[2]
+
+LaTeX Warning: Reference `sec:related_work' on page 3 undefined on input line 2
+0.
+
+
+LaTeX Warning: Reference `sec:hybrid_arc' on page 3 undefined on input line 20.
+
+
+
+LaTeX Warning: Reference `sec:sw_algorithm' on page 3 undefined on input line 2
+0.
+
+
+LaTeX Warning: Reference `sec:evaluation' on page 3 undefined on input line 20.
+
+
+) [3] (./src/miss_assumed_pipeline.tex
+第 2章
+
+LaTeX Warning: Reference `sec:map_structure' on page 4 undefined on input line 
+4.
+
+
+LaTeX Warning: Reference `sec:map_different' on page 4 undefined on input line 
+4.
+
+
+LaTeX Warning: Reference `sec:tradeoff' on page 4 undefined on input line 4.
+
+
+LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 9.
+
+
+LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 11.
+
+
+LaTeX Warning: Reference `sub@fig:hap_pipeline' on page 4 undefined on input li
+ne 11.
+
+
+LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 11.
+
+
+LaTeX Warning: Reference `sub@fig:hap_pipeline' on page 4 undefined on input li
+ne 11.
+
+[4]
+
+LaTeX Warning: Reference `sec:map_different' on page 5 undefined on input line 
+13.
+
+) [5] (./src/summary.tex
+第 3章
+) [6] (./src/publication.tex) [7] (./src/acknowledgement.tex) [8] (./main.bbl)
+[9] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+(./src/miss_assumed_pipeline.aux) (./src/summary.aux) (./src/publication.aux)
+(./src/acknowledgement.aux))
+
+LaTeX Warning: There were undefined references.
+
+ )
+(see the transcript file for additional information)
+Output written on main.dvi (12 pages, 23016 bytes).
+Transcript written on main.log.
