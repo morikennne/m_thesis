@@ -1,0 +1,98 @@
+sss{   "editor.tabSize": 2,  // タブのインデントをスペース2に
+    "editor.rulers": [    // 80文字のところに縦線を引く
+        80
+    ],
+
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 1,
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontFamily": "Myrica M, Consolas, 'Courier New', monospace",
+    "editor.renderWhitespace": "all",
+    "editor.autoIndent": "brackets",
+    "editor.wordWrap": "off",
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false, 
+    "editor.wordWrapColumn": 80,
+    "editor.wrappingIndent": "same",
+    "git.ignoreLegacyWarning": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "terminal.integrated.copyOnSelection": true,
+  
+    "[json]": {
+    
+    },
+
+    "terminal.integrated.rendererType": "dom",
+    "[latex]": {
+      // ウィンドウ幅に合わせて折り返し
+      "editor.wordWrap": "bounded",
+      "editor.wordWrapColumn": 80,
+    },
+    "latex-workshop.view.pdf.viewer": "browser",
+  
+  
+    // python 関係
+    "[python]": {
+      "editor.detectIndentation": true,
+      "editor.tabSize": 4,  // python ではタブのインデントをスペース4に
+    },
+
+    // C 言語の設定
+    "C_Cpp.updateChannel": "Default", // Insider にすると重い(気がする)
+    "clang.executable": "clang++",
+    // "clang.cxxflags": [ "-std=c++14"],
+
+    // Whether to lint Python files.
+    "python.linting.enabled": true,
+    // Whether to lint Python files using pylint.
+    "python.linting.pylintEnabled": true,
+
+    // lint の設定
+    "python.linting.pylintArgs": [
+      "--disable=W0611,C0111,C0303,C0103",
+      "--extension-pkg-whitelist=numpy",
+      "--dummy-variables-rgx",
+      "^_$|^dummy$|^tmp.*$",
+    ],
+    
+    "[plaintext]": {
+      // ウィンドウ幅に合わせて折り返し
+      "editor.wordWrap": "bounded",
+      "editor.wordWrapColumn": 80,    
+      "editor.detectIndentation": true,
+      "editor.tabSize": 4,  // md ではタブのインデントをスペース4に
+    },
+    
+    "[md]": {
+      // ウィンドウ幅に合わせて折り返し
+      "editor.wordWrap": "bounded",
+      "editor.wordWrapColumn": 80,
+      "editor.detectIndentation": true,
+      "editor.tabSize": 4,  // md ではタブのインデントをスペース4に
+    },
+
+    "[txt]": {
+      // ウィンドウ幅に合わせて折り返し
+      "editor.wordWrap": "bounded",
+      "editor.wordWrapColumn": 80,
+      "editor.detectIndentation": true,
+      "editor.tabSize": 4,  // md ではタブのインデントをスペース4に
+    },
+    "files.associations": {
+
+    
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.tokenColorCustomizations": null,
+    "settingsSync.ignoredExtensions": [
+    
+    ],
+    
+    // 重くなる対策
+    // "typescript.tsc.autoDetect": "off",
+    // "grunt.autoDetect": "off",
+    // "jake.autoDetect": "off",
+    // "npm.autoDetect": "off",
+    // "gulp.autoDetect": "off",
+    // "terminal.integrated.fontFamily": "monospace"
+}
