@@ -57,7 +57,7 @@ Entering pLaTeX 2.09 compatibility mode.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/tracefnt.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty))
-(/usr/share/texlive/texmf-dist/tex/platex/base/ptrace.sty)) (./jbmdthesis.sty
+(/usr/share/texlive/texmf-dist/tex/platex/base/ptrace.sty)) (./jbmdthesis.cls
 Document Style `jmyreport'. <18 Dec 88>
 (./jmyrep12.sty) (./mytitlepage.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty) (./a4j.sty)
@@ -186,5 +186,5 @@ LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (12 pages, 23032 bytes).
+Output written on main.dvi (12 pages, 23308 bytes).
 Transcript written on main.log.
