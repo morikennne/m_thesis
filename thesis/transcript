@@ -2,26 +2,17 @@ This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 The top-level auxiliary file: main.aux
 A level-1 auxiliary file: src/abstract.aux
 A level-1 auxiliary file: src/introduction.aux
-A level-1 auxiliary file: src/miss_assumed_pipeline.aux
+A level-1 auxiliary file: src/basic_IQ.aux
 A level-1 auxiliary file: src/summary.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran.bst
-Database file #1: ref.bib
-Warning--I didn't find a database entry for "Ranganathan1998"
-Warning--I didn't find a database entry for "Vaidya2008"
-Warning--I didn't find a database entry for "Ferdman2012"
-Warning--I didn't find a database entry for "Zhu2015"
-Warning--I didn't find a database entry for "Chadha2014"
-Warning--I didn't find a database entry for "Ayers2019"
-Warning--I didn't find a database entry for "Reinman1999"
-Warning--I didn't find a database entry for "Ferdman2008"
+Database file #1: ref_swopp.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-(There were 8 warnings)
 This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex)
  \write18 enabled.
 entering extended mode
@@ -87,104 +78,59 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)) (./main.aux
-(./src/abstract.aux) (./src/introduction.aux) (./src/miss_assumed_pipeline.aux)
+(./src/abstract.aux) (./src/introduction.aux) (./src/basic_IQ.aux)
 (./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
 (./src/abstract.tex) [1] (./main.toc) [2] (./src/introduction.tex
 第 1章
+[1]
 
-LaTeX Warning: Citation `Ranganathan1998' on page 1 undefined on input line 4.
-
-
-LaTeX Warning: Citation `Vaidya2008' on page 1 undefined on input line 4.
-
-
-LaTeX Warning: Citation `Ferdman2012' on page 1 undefined on input line 4.
+LaTeX Warning: Reference `sec:issue_queue' on page 2 undefined on input line 19
+.
 
 
-LaTeX Warning: Citation `Zhu2015' on page 1 undefined on input line 4.
+LaTeX Warning: Reference `sec:segmented_IQ' on page 2 undefined on input line 1
+9.
 
 
-LaTeX Warning: Citation `Chadha2014' on page 1 undefined on input line 4.
+LaTeX Warning: Reference `sec:second_tag_comp' on page 2 undefined on input lin
+e 19.
 
 
-LaTeX Warning: Citation `Ferdman2012' on page 1 undefined on input line 4.
+LaTeX Warning: Reference `sec:occupency_reduction' on page 2 undefined on input
+ line 19.
 
 
-LaTeX Warning: Citation `Ayers2019' on page 1 undefined on input line 4.
+LaTeX Warning: Reference `sec:switch' on page 2 undefined on input line 19.
 
 
-LaTeX Warning: Citation `Reinman1999' on page 1 undefined on input line 8.
+LaTeX Warning: Reference `sec:eval' on page 2 undefined on input line 19.
 
-
-LaTeX Warning: Citation `Ferdman2008' on page 1 undefined on input line 8.
-
-
-Underfull \vbox (badness 2165) has occurred while \output is active [1]
-[2]
-
-LaTeX Warning: Reference `sec:related_work' on page 3 undefined on input line 2
-0.
-
-
-LaTeX Warning: Reference `sec:hybrid_arc' on page 3 undefined on input line 20.
-
-
-
-LaTeX Warning: Reference `sec:sw_algorithm' on page 3 undefined on input line 2
-0.
-
-
-LaTeX Warning: Reference `sec:evaluation' on page 3 undefined on input line 20.
-
-
-) [3] (./src/miss_assumed_pipeline.tex
+) [2] (./src/basic_IQ.tex
 第 2章
-
-LaTeX Warning: Reference `sec:map_structure' on page 4 undefined on input line 
-4.
-
-
-LaTeX Warning: Reference `sec:map_different' on page 4 undefined on input line 
-4.
-
-
-LaTeX Warning: Reference `sec:tradeoff' on page 4 undefined on input line 4.
-
-
-LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 9.
-
-
-LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 11.
-
-
-LaTeX Warning: Reference `sub@fig:hap_pipeline' on page 4 undefined on input li
-ne 11.
-
-
-LaTeX Warning: Reference `fig:pipeline' on page 4 undefined on input line 11.
-
-
-LaTeX Warning: Reference `sub@fig:hap_pipeline' on page 4 undefined on input li
-ne 11.
-
-[4]
-
-LaTeX Warning: Reference `sec:map_different' on page 5 undefined on input line 
-13.
-
-) [5] (./src/summary.tex
+[3] <figure/iq_logic.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 18--19
+ [][] 
+[4] <figure/wakeup_logic.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 36--37
+ [][] 
+<figure/cam.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
+[][] 
+[5]
+Underfull \vbox (badness 10000) has occurred while \output is active [6]
+[7]) [8] (./src/summary.tex
 第 3章
-) [6] (./src/publication.tex) [7] (./src/acknowledgement.tex) [8] (./main.bbl)
-[9] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
-(./src/miss_assumed_pipeline.aux) (./src/summary.aux) (./src/publication.aux)
+) [9] (./src/publication.tex) [10] (./src/acknowledgement.tex) [11] (./main.bbl
+) [12] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+(./src/basic_IQ.aux) (./src/summary.aux) (./src/publication.aux)
 (./src/acknowledgement.aux))
 
 LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (12 pages, 23308 bytes).
+Output written on main.dvi (15 pages, 32252 bytes).
 Transcript written on main.log.
