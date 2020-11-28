@@ -121,10 +121,12 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
 [][] 
 [5]
 Underfull \vbox (badness 10000) has occurred while \output is active [6]
-[7]) [8] (./src/summary.tex
+[7]
+Underfull \vbox (badness 1168) has occurred while \output is active [8])
+[9] (./src/summary.tex
 第 3章
-) [9] (./src/publication.tex) [10] (./src/acknowledgement.tex) [11] (./main.bbl
-) [12] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+) [10] (./src/publication.tex) [11] (./src/acknowledgement.tex) [12]
+(./main.bbl) [13] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
 (./src/basic_IQ.aux) (./src/summary.aux) (./src/publication.aux)
 (./src/acknowledgement.aux))
 
@@ -132,5 +134,5 @@ LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (15 pages, 32252 bytes).
+Output written on main.dvi (16 pages, 35944 bytes).
 Transcript written on main.log.
