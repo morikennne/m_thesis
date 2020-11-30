@@ -3,7 +3,8 @@ The top-level auxiliary file: main.aux
 A level-1 auxiliary file: src/abstract.aux
 A level-1 auxiliary file: src/introduction.aux
 A level-1 auxiliary file: src/basic_IQ.aux
-A level-1 auxiliary file: src/summary.aux
+A level-1 auxiliary file: src/related_work.aux
+A level-1 auxiliary file: src/segment_IQ.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran.bst
@@ -79,7 +80,8 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)) (./main.aux
 (./src/abstract.aux) (./src/introduction.aux) (./src/basic_IQ.aux)
-(./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+(./src/related_work.aux) (./src/segment_IQ.aux) (./src/publication.aux)
+(./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
@@ -91,14 +93,6 @@ LaTeX Warning: Reference `sec:issue_queue' on page 2 undefined on input line 19
 .
 
 
-LaTeX Warning: Reference `sec:segmented_IQ' on page 2 undefined on input line 1
-9.
-
-
-LaTeX Warning: Reference `sec:second_tag_comp' on page 2 undefined on input lin
-e 19.
-
-
 LaTeX Warning: Reference `sec:occupency_reduction' on page 2 undefined on input
  line 19.
 
@@ -107,6 +101,9 @@ LaTeX Warning: Reference `sec:switch' on page 2 undefined on input line 19.
 
 
 LaTeX Warning: Reference `sec:eval' on page 2 undefined on input line 19.
+
+
+LaTeX Warning: Reference `sec:summary' on page 2 undefined on input line 19.
 
 ) [2] (./src/basic_IQ.tex
 第 2章
@@ -123,16 +120,31 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
 Underfull \vbox (badness 10000) has occurred while \output is active [6]
 [7]
 Underfull \vbox (badness 1168) has occurred while \output is active [8])
-[9] (./src/summary.tex
+[9] (./src/related_work.tex
 第 3章
-) [10] (./src/publication.tex) [11] (./src/acknowledgement.tex) [12]
-(./main.bbl) [13] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
-(./src/basic_IQ.aux) (./src/summary.aux) (./src/publication.aux)
-(./src/acknowledgement.aux))
+) [10] (./src/segment_IQ.tex
+第 4章
+<figure/segmentedIQ.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 11--12
+ [][] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [11]
+<figure/dispatch.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 25--26
+ [][] 
+<figure/segmentedIQ_wakeup.eps> [12] [13] [14]
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd) [15] [16]
+<figure/sub_segment.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 98--99
+ [][] 
+[17] [18] [19]) [20] (./src/publication.tex) [21] (./src/acknowledgement.tex)
+[22] (./main.bbl [23]) [24] (./main.aux (./src/abstract.aux)
+(./src/introduction.aux) (./src/basic_IQ.aux) (./src/related_work.aux)
+(./src/segment_IQ.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 
 LaTeX Warning: There were undefined references.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (16 pages, 35944 bytes).
+Output written on main.dvi (27 pages, 67100 bytes).
 Transcript written on main.log.

@@ -21,6 +21,7 @@
 \newcommand{\tab}[1]{{表~\ref{tab:#1}}}
 \newcommand{\refchap}[1]{第{\ref{sec:#1}~章}}
 \newcommand{\refsec}[1]{{\ref{sec:#1}~節}}
+\newcommand{\ctext}[1]{\textcircled{\scriptsize{#1}}}
 
 % ページ番号をアラビア数字にする(0,1,2,..)
 \pagenumbering{roman}
@@ -68,8 +69,10 @@
 \include{src/introduction}
 \include{src/basic_IQ}
 
-% \include{src/related_work}
-\include{src/summary}
+\include{src/related_work}
+\include{src/segment_IQ}
+
+% \include{src/summary}
 
 
 % 付録（必要に応じてコメントを外したり，新たに追加する）
