@@ -5,6 +5,7 @@ A level-1 auxiliary file: src/introduction.aux
 A level-1 auxiliary file: src/basic_IQ.aux
 A level-1 auxiliary file: src/related_work.aux
 A level-1 auxiliary file: src/segment_IQ.aux
+A level-1 auxiliary file: src/switch.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran.bst
@@ -80,24 +81,20 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)) (./main.aux
 (./src/abstract.aux) (./src/introduction.aux) (./src/basic_IQ.aux)
-(./src/related_work.aux) (./src/segment_IQ.aux) (./src/publication.aux)
-(./src/acknowledgement.aux))
+(./src/related_work.aux) (./src/segment_IQ.aux) (./src/switch.aux
+
+LaTeX Warning: Label `sec:switch' multiply defined.
+
+) (./src/publication.aux) (./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
-(./src/abstract.tex) [1] (./main.toc) [2] (./src/introduction.tex
+(./src/abstract.tex) [1] (./main.toc) [2] [3] (./src/introduction.tex
 第 1章
 [1]
 
 LaTeX Warning: Reference `sec:issue_queue' on page 2 undefined on input line 19
 .
-
-
-LaTeX Warning: Reference `sec:occupency_reduction' on page 2 undefined on input
- line 19.
-
-
-LaTeX Warning: Reference `sec:switch' on page 2 undefined on input line 19.
 
 
 LaTeX Warning: Reference `sec:eval' on page 2 undefined on input line 19.
@@ -137,14 +134,29 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 25--26
 <figure/sub_segment.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 98--99
  [][] 
-[17] [18] [19]) [20] (./src/publication.tex) [21] (./src/acknowledgement.tex)
-[22] (./main.bbl [23]) [24] (./main.aux (./src/abstract.aux)
-(./src/introduction.aux) (./src/basic_IQ.aux) (./src/related_work.aux)
-(./src/segment_IQ.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+[17] [18] [19]) [20] (./src/switch.tex
+第 5章
+
+LaTeX Warning: Reference `fig:stall_segmentedIQ' on page 21 undefined on input 
+line 8.
+
+[21] [22] [23] [24]
+Underfull \vbox (badness 1052) has occurred while \output is active [25]
+Underfull \vbox (badness 10000) has occurred while \output is active [26]
+<figure/switch.eps>
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
+ [][] 
+[27]) [28] (./src/publication.tex) [29] (./src/acknowledgement.tex) [30]
+(./main.bbl [31]) [32] (./main.aux (./src/abstract.aux) (./src/introduction.aux
+) (./src/basic_IQ.aux) (./src/related_work.aux) (./src/segment_IQ.aux)
+(./src/switch.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  )
 (see the transcript file for additional information)
-Output written on main.dvi (27 pages, 67100 bytes).
+Output written on main.dvi (36 pages, 93336 bytes).
 Transcript written on main.log.
