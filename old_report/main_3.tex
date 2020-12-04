@@ -1,0 +1,367 @@
+
+% ページフォーマットの指定
+\documentclass[twocolumn]{jsarticle}
+
+  % 外部パッケージの導入
+  % 引用
+  \usepackage{cite}
+  % 画像の出力
+  \usepackage[dvipdfmx]{graphicx}
+  
+  % 画像元のパスの追加
+  \graphicspath{{figure/}}
+  
+  % 文書本体の記述
+  \begin{document}
+  \title{プログレスレポート}
+  \date{\today}
+  \author{森健一郎\\配布対象：安藤先生}
+  
+  \maketitle
+  
+  \section{研究目的}
+  プロセッサ・チップ上には，ホット・スポットと呼ばれる単位面積あたりの電力が大きい場所が存在する．ホット・スポットは，そうでない場所と比べて温度上昇が激しいため，プロセッサの故障を引き起こす可能性が高い．~\cite{Weste2010,Monsieur2001,Khan2010,Black1969,Viswanath2000}従って，ホット・スポットを生成する回路の消費電力を低下させる必要がある．
+
+  ホット・スポットを生成する回路の１つに，発行キュー(IQ:issue queue)がある．IQ のサイズはプロセッサの世代が進むごとに大きくなっており，より深刻なホット・スポットとなっている．従って，IQ の電力削減に対する要求は非常に大きい．
+  
+  IQ の中で最も電力を消費するのは，タグ比較の回路である．タグ比較は，発行幅分のディスティネーション・タグとすべてのソース・タグで行われるため，電力効率が非常に悪い．そこで本研究では，ディスティネーション・タグとソース・タグの下位ビットが等しい命令についてのみ比較器を動作させることにより，動作する比較器の数を減少させ電力を削減する方法を提案する．
+
+  提案手法は，次のように実現する．IQ を複数のセグメントに分割し，第 n セグメントには，第 1 ソース・タグの下位ビットが n である命令のみをディスパッチする．そして，ウェイクアップのタグ比較の際には，ディスティネーション・タグの下位ビットが，自身に割り当てられた命令の第1ソース・タグの下位ビットと等しいセグメントのみ，比較器を動作させてタグ比較を行う．この方法により，第１ソース・タグについての比較器の動作回数を「1/セグメント数」に減少させることができる．
+
+  提案手法における欠点として，セグメントが詰まることによる性能低下が挙げられる．あるセグメントに空きがない状態で，そのセグメントにディスパッチされる命令が現れた場合を考える．この場合，他のセグメントにディスパッチすることはできないため，該当のセグメントに空きが出るまでディスパッチを停止する必要があり，これは性能低下に繋がる．本研究では，この欠点に対する対応策を考え，性能低下が許容できる範囲内に収まるようにする必要がある．
+
+  また，その他の欠点として，第2ソース・タグの比較器の動作回数は削減できないことなどが挙げられる．これらの欠点に対しても十分に検討し，提案手法における電力削減及び性能の変化について評価を行う．
+  
+  \section{経過}
+
+  \subsection{前回の経過}
+  \begin{itemize}
+    \item 提案手法の修正及び評価
+    \item レジスタ・フリーリストのセグメント化の実装及び評価
+  \end{itemize}
+  
+  \subsection{今回の経過}
+  \begin{itemize}
+  \item 提案手法の修正及びその評価
+  \item Swap方式の改良及びその評価
+  \item レジスタ・フリーリストのセグメント化の修正及びその評価
+  \item 占有率が低下しても性能に影響を与えない原因の調査
+  \end{itemize}
+
+  \section{活動報告}
+  \subsection{提案手法の修正及びその評価}
+  \subsubsection{提案手法の修正点}
+  前回レポート時までの提案手法では，第１ソース・オペランドがレディの場合，それがゼロ・レジスタである場合を除いて，第１ソース・タグ値の下位ビットを用いて割り当てるセグメントを決定していた．しかし第１ソース・オペランドがレディの場合，タグ比較は行われないため，実際はどのセグメントにディスパッチしても問題ない．
+  
+  そこで，第1ソース・オペランドがレディの場合には，ソース・タグ値に基づきセグメントを決定するのではなく，特定のアルゴリズムによってディスパッチを行うセグメントを決定するように修正した．これにより，第1ソース・オペランドがレディで，かつ第1ソース・タグ値より決定されたセグメントに空きがない場合にディスパッチがストールすることがなくなり，容量効率の低下が改善されると期待できる．(以降では，ソース・オペランドがレディでどのセグメントにディスパッチしても問題のない状態を，セグメント・フリーと呼ぶこととする)
+  
+  なお，前回のレポートで第1ソース・オペランドを使用しない命令としていた命令は，すべて第1ソース・オペランドがレディである命令に含むこととする．また，以下のアルゴリズムをセグメント・フリーの場合の割当アルゴリズムとして使用した．
+
+  \begin{itemize}
+    \item ROUNDROBIN：割当を行うセグメントをラウンドロビンで決定する
+    \item MAX：最も空きの多いセグメントに割当を行う
+  \end{itemize}
+
+  提案手法におけるセグメントの割当方についてまとめる．
+
+  \begin{enumerate}
+    \item 第1ソース・オペランドがレディ：セグメント・フリーであるため，割当アルゴリズムに基づいてセグメントを決定
+    \item 第1ソース・オペランドがレディでない：第1ソース・タグ値の下位ビットよりセグメントを決定．該当のセグメントに空きがない場合はストール
+  \end{enumerate}
+
+  \begin{table}[htb]
+    \caption{プロセッサの基本構成}
+    \footnotesize
+    \center
+      \begin{tabular}{l|l} \hline \hline
+       Pipeline width & 8 instructions wide for each of \\
+       & fetch, decode, issue, and commit \\
+       Reorder buffer & 256 entries \\
+       IQ & 128 entries \\
+       Load/Store queue & 128 entries \\
+       Physical registers & 256(int) + 256(fp) \\
+       Branch prediction & 12-bit history 4K-entry PHT gshare \\
+       & 2K-set 4-way BTB \\
+       & 10-cycle misprediction penalty \\
+       Function unit & 4 iALU, 2 iMULT, \\
+       &  3 FPU, 2 LSU \\
+       L1 D-cache & 32KB, 8-way, 64B line \\
+        & 2-cycle hit latency \\
+       L1 I-cache & 32KB, 8-way, 64B line \\
+        &  2-cycle hit latency \\
+       L2 cache & 2MB, 16-way, 64B line \\
+        & 12-cycle hit latency \\  
+       Main memory & 300-cycle latency \\
+       & 16B/cycle bandwidth \\ 
+       Prefetch & stream-based,32-stream tracked,  \\ 
+       & 16-line distance, 2-line degree, \\
+       & prefetch to L2 cache \\ \hline
+    \end{tabular}
+    \label{tab:base_config}
+  \end{table}
+
+  \subsubsection{評価環境}
+  \label{sec:config}
+  評価環境について説明する．シミュレータには SimpleScalar をベースに修正を加えたものを使用した．表\ref{tab:base_config}にプロセッサ構成を示す．測定ベンチマークには，SPEC CPU 2017 ベンチマークのうち，int 系 9 本と fp 系 9 本の計 18 本を使用した．ベンチマークの測定区間は，プログラムの先頭から 16G 命令をスキップした後の 100M 命令である．
+
+  \subsubsection{評価モデル}
+  評価モデルとしては，以下の4つを用いた．
+  \begin{itemize}
+    \item base：通常の発行キューを使用したモデル
+    \item old：前回レポート時点での提案手法を使用したモデル
+    \item roundrobin：修正した提案手法において，セグメント・フリーの場合にROUNDROBIN でセグメントを決定するモデル
+    \item max：修正した提案手法において，セグメント・フリーの場合に MAX でセグメントを決定するモデル
+  \end{itemize}
+
+  \begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.99\hsize]{reduction_int_normal.pdf}
+    \caption{提案手法による比較器の動作回数削減率(int系)}
+    \label{fig:reduction_int_normal}
+
+    \includegraphics[width=0.99\hsize]{reduction_fp_normal.pdf}
+    \caption{提案手法による比較器の動作回数削減率(fp系)}
+    \label{fig:reduction_fp_normal}
+    
+    \includegraphics[width=0.99\hsize]{ipc_normal.pdf}
+    \caption{提案手法による IPC の変化}
+    \label{fig:ipc_normal}
+
+    \includegraphics[width=0.99\hsize]{occupency_normal.pdf}
+    \caption{提案手法における IQ の占有率}
+    \label{fig:occupency_normal}
+  \end{figure*}
+
+  \subsubsection{修正した提案手法の評価}
+  修正を加えた提案手法に関して，改めてタグ比較回数の削減，性能変化，容量効率に関する測定を行った．測定結果を，図~\ref{fig:reduction_int_normal}，~\ref{fig:reduction_fp_normal}，~\ref{fig:ipc_normal}，~\ref{fig:occupency_normal}に示す．
+  \paragraph{占有率}
+  まず，図~\ref{fig:occupency_normal}の占有率に関して考える．oldと比較すると，roundrobin と max では，占有率が僅かに上昇している．これは，レディであるreg1に該当するセグメントに空きがない場合にストールを防ぐという今回の修正の目的が達成できているためであると考えられる．base と roundrobin，max を比較してみると，平均で10 \%pt 程度占有率が低下していることが分かる．従って，容量効率を低下させないという観点から見ると，提案手法にはまだ改善の余地があると言える．(だが，スワップを使用しないという前提で考えると，これ以上改善することは難しいように思える．)
+  \paragraph{タグ比較の削減率}
+  続いて図~\ref{fig:reduction_int_normal}，~\ref{fig:reduction_fp_normal}のダグ比較の削減率に関して考える．図の大きさの都合上，int 系と fp 系に分割してある．図の横軸は，各ベンチマークにおいて左からold，roundrobin，segment モデルでのタグ比較の削減率を表したグラフとなっている．また，削減率のうち，segment reduction(緑色の部分)がセグメント化による削減を表し，stall reduction(赤色の部分)が，ストールすることによって生じる削減を表す．両者をたした値がトータルの削減率となる．
+  
+  図より，どのベンチマークでも修正した提案手法ではoldに比べて僅かに削減率が低下していることが分かる．これは，修正した提案手法では占有率が上昇したという結果と一致する．
+  
+  提案手法の純粋な効果をあらわす segment re-duction に関して考える．平均で見ると，理論値である47\%に近い値を表していることが分かる．従って，提案手法による削減は期待したとおりに動作していると言える．ベンチマークによっては理論値と少しズレが生じているが，これは理論値を求める際に第1ソース・オペランドと第2ソース・オペランドのタグ比較の回数が同じであるという仮定をおいているためである．実際には，ベンチマークごとに偏りがあるため，それが原因でベンチマークごとに理論値とずれが生じる．
+  
+  続いてストールが原因で起こる削減を表す stall reduction について考える．stall reduction の値はベンチマークによって大きく異なり，小さいものだと 0\% に近いが，大きいものだと 20\% 程度となる．この値は，図~\ref{fig:occupency_normal}における base からの低下率と関係していて，base に対して大きく占有率が低下するベンチマークでは stall reduction の値も大きくなっている．これは，ストール回数が多く占有率が低下すると，それだけ比較器の動作回数も小さくなるという直感と一致した結果となっている．
+
+  \paragraph{性能変化}
+  次に図~\ref{fig:ipc_normal}の性能変化について考える．性能に関してはこれまでの評価と同様に，提案手法によって大きく低下していないことが分かる．
+  
+  \paragraph{raundrobinとmaxの比較}
+  raundrobinとmaxに関して比較する．raundrobinの占有率は，maxと比較して平均で2\% pt程度と僅かに小さい値を示している．その結果，削減率においても3\%程度maxよりも小さい値となっている．なお，これはほとんどstall reductionの差となっており，segment reductionは同じであると考えて良い．
+  
+  maxは，全セグメントの中から最も空き数の多いセグメントを選択する回路が必要である．2\%pt程度の占有率の違いであれば，簡単な回路で実現できると思われるroundrobinのほうが良いのではないかと考えている．従って，以降の測定では，セグメント・フリーの場合はraundrobinを使用することとする．
+
+  \clearpage
+  \subsection{Swap 方式の改善及び評価}
+  \subsubsection{Swap 方式の細分化とバリエーション}
+  Swap方式は第1ソース・オペランドがレディであり，第2ソース・オペランドがレディでない場合に第1ソース・タグと第2ソース・タグを交換するというものであった．今回はこのSwap方式を，よりタグ比較の削減を重視したSwap\_Aggresiveと，より容量効率を重視したSwap\_Conservativeの2つの方式に細分化した．
+  
+  また，現在のSwap方式では，ソース・オペランドが両方共レディでない場合には，第1ソース・タグ値を使用してディスパッチするセグメントを決定している．もし，第1ソース・タグ値によって決定するセグメントに空きがない場合に，スワップを行い第2ソース・タグ値によってセグメントを決定すれば，ストールを回避できるかもしれない．そこで，ソース・オペランドが両方レディでない場合に，セグメントを決定するために使用するタグを選択するようなSwap方式のバリエーションを実装した．これをSTDS (Selecting Tag to Dicide Segment)と呼ぶことにする．
+
+  以 降 ，Swap\_Aggresive，Swap\_Conservative，STDSのアルゴリズムについて詳細に説明する．
+
+  \subsubsection{Swap\_Aggresive}
+  Swap\_Aggresiveは，これまでのレポートでのSwap方式と同様のものと考えて良い．以下のアルゴリズムに基づきディスパッチするセグメントを決定する．説明の都合上，第1ソース・オペランドをreg1，第2ソース・オペランドをreg2と表す．
+  \begin{enumerate}
+    \item reg1がレディかつreg2もレディ：セグメント・フリーとして割り当てを行う．
+    \label{one}
+    \item reg1がレディでなくreg2がレディ：reg1のタグ値を用いてセグメントを決定．該当のセグメントに空きがなければストールする．
+    \label{two}
+    \item reg1がレディでreg2がレディでない：reg2のタグ値を用いてセグメントを決定(スワップ)．該当のセグメントに空きがなければストールする．
+    \label{three}
+    \item reg1がレディでなくreg2もレディでない：reg1のタグ値を用いてセグメントを決定．該当のセグメントに空きがなければストールする．
+    \label{four}
+  \end{enumerate}
+
+  \subsubsection{Swap\_Conservative}
+  Swap\_Conservativeは，Swap\_Aggresiveよりも容量効率を重視したものとなっている．Swap\_Aggresiveは，片方のオペランドがレディでもう片方がレディでない場合に，レディでない方のタグ値を用いてセグメントを決定し，もし，決定されたセグメントに空きがない場合にはストールしていた．このような場合に，Swap\_Conservativeでは，ストールするのではなくセグメント・フリーとして割当を行い，発行キューの第1ソース・タグを格納するフィールドにレディであるタグを入れる．
+  
+  以下にSwap\_Conservativeの割当アルゴリズムを示す．~\ref{two}番と~\ref{three}番での動作がSwap\_Aggresiveと異なる
+  \begin{enumerate}
+    \item reg1がレディかつreg2もレディ：セグメント・フリーとして割り当てを行う．\item reg1がレディでなくreg2がレディ：reg1のタグ値を用いてセグメントを決定．該当のセグメントに空きがなければ，スワップを行いセグメント・フリーとして割当を行う．
+    \item reg1がレディでreg2がレディでない：reg2のタグ値を用いてセグメントを決定(スワップ)．該当のセグメントに空きがなければ，スワップをせずにセグメント・フリーとして割当を行う．
+    \item reg1がレディでなくreg2もレディでない：reg1のタグ値を用いてセグメントを決定．該当のセグメントに空きがなければストールする
+  \end{enumerate}
+
+  Swap\_Aggresiveと比較したSwap\_Conservativeの欠点として，タグ比較回数の削減率の低下が挙げられる．これは，アルゴリズムの~\ref{two}番と~\ref{three}番においてセグメント・フリーで割当を行った場合に，タグ比較の削減が行える第1ソース・タグのフィールドにレディなタグが入り，削減の行えない第2ソース・タグのフィールドにレディでないタグが入るため，提案手法によるタグ比較の削減が全く行えないためである．
+
+  \subsubsection{STDS (Selecting Tag to Dicide Segment)}
+  Swap\_Aggresive，Swap\_Conservativeのいずれにおいても，アルゴリズムの~\ref{four}番，つまりどちらのソース・オペランドもレディでない場合には，reg1のタグ値を用いてセグメントを決定していた． もし，reg1によって決定されるセグメントに空きがない場合，スワップしてreg2を使用することによってストールを防ぐことができるかもしれない．そこで，セグメントの空き状況に応じて，reg1とreg2のどちらを使用するかを選択できるようにしたSTDS (Selecting Tag to Dicide Segment)を実装した．STDSにより，Swap方式において容量効率の低下を抑制することが期待できる．
+
+  STDSを 適 応 し たSwap\_Aggresive，Swap\_Conservativeでは，割当アルゴリズムのうち~\ref{four}番目が，以下のように変更される．
+
+  \begin{enumerate}
+    \setcounter{enumi}{3}
+    \item reg1がレディでなくreg2もレディでない：reg1のタグ値を用いてセグメントを決定．該当のセグメントに空きがなければreg2のタグ値を用いてセグメントを決定(スワップ)．該当のセグメントに空きがなければストールする．
+  \end{enumerate}
+  
+  \subsubsection{評価モデル}
+  Swap 方式の評価を行うため，以下のモデルを使用した．
+  \begin{itemize}
+    \item base：通常の発行キューを使用したモデル
+    \item normal：通常の提案手法を使用したモデル(Swapを行わない)
+    \item agg：提案手法のSwap\_Aggresive方式を使用したモデル
+    \item agg+STDS：提案手法のSwpa\_Aggresive方式にSTDSを適応したモデル
+    \item cons：提案手法のSwap\_Conservative方式を使用したモデル
+    \item cons+STDS：提案手法のSwap\_Conservative方式にSTDSを適応したモデル
+  \end{itemize}
+
+  なお，評価環境は~\ref{sec:config}節と同様である．
+
+  \begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.99\hsize]{reduction_int_swap.pdf}
+    \caption{Swap 方式による比較器の動作回数削減率(int系)}
+    \label{fig:reduction_int_swap}
+
+    \includegraphics[width=0.99\hsize]{reduction_fp_swap.pdf}
+    \caption{Swap 方式による比較器の動作回数削減率(fp系)}
+    \label{fig:reduction_fp_swap}
+    
+    \includegraphics[width=0.99\hsize]{ipc_swap.pdf}
+    \caption{Swap 方式による IPC の変化}
+    \label{fig:ipc_swap}
+
+    \includegraphics[width=0.99\hsize]{occupency_swap.pdf}
+    \caption{Swap 方式での IQ の占有率}
+    \label{fig:occupency_swap}
+  \end{figure*}
+
+  \subsubsection{改良したSwap方式の評価}
+  改良した Swap 方式の評価結果を，図~\ref{fig:reduction_int_swap}，~\ref{fig:reduction_fp_swap}，~\ref{fig:ipc_swap}，~\ref{fig:occupency_swap}に示す．
+  \paragraph{占有率}
+  まず，図~\ref{fig:occupency_swap}の占有率に関して考える．はじめに，Swap\_Aggressive(agg)及びSwap\_Conservative(cons)について評価する．図より，normalに比べてaggでは占有率が僅かに低下し，confでは比較的大きく上昇していることが分かる．これは，Swap\_Aggresiveがよりタグ比較の削減を行うためのモデルであり，Swap\_Conservativeがより容量効率を上昇させるモデルであることと一致する結果である．
+  
+  次にSTDSの効果について考える．図より，conf+STDSの場合に，normalやaggと比較して大きく占有率が向上していることが分かる．特にxzベンチマークやpop2などでは，normalの際に大きく低下していた占有率が，比較的baseと近い値となっていることが分かる．平均で考えても，normlaの場合はbaseから10\%ptほど低下していたのに対して，conf+STDSでは4\%pt程度の低下に抑えられている．このことからSTDSによって，容量効率が低下するという提案手法の欠点が緩和されていると言える．
+
+  \paragraph{タグ比較の削減率}
+  続いて，図~\ref{fig:reduction_int_swap}，~\ref{fig:reduction_fp_swap}のタグ比較の削減率に関して考える．図の横軸は，各ベンチマークにおいて，左からnormal，agg，agg+STDS，cons，cons+STDS を表す．
+  
+  図よりSwap\_Aggresive(agg)では，normalの場合に比べてより削減率が高くなっていることが分かる．これは，提案手法の純粋な効果を表すsegment reductionが増加していることが主な要因であり，normalでは削減できていなかった 第2ソース・オペランドのタグ比較がSwap方式によって効果的に削減できていることを示している．なお，aggとagg+STDSを比較すると，僅かにagg+STDSのほうが削減率が低下しているが，ほとんど変わらないと言って良い程度である．
+  
+  続いて，Swap\_Conservative(cons)について考える．平均で見るとconsはaggと比較して，stall reductionが低下していることが分かる．これは，consにおいて容量効率が増加しているためであっる．また，cons+STDSは，consよりも更にstall reductionが低下している．これはもともと容量効率を重視するSwap\_ConservativeにプラスしてSTDSを使用しているためである．平均を見てみると，normalの場合よりも削減率が低下してしまっているが，これはstall reductionが大きく低下したためであり，容量効率を低下させないという目的は達成できている．
+
+  \paragraph{性能変化}
+  図~\ref{fig:ipc_swap}の性能変化に関して考える．図よりSwap方式でもほとんどのベンチマークで性能が低下していないことが分かる．唯一Swap\_Aggresive(agg)においてimagickが8\%ほど性能が低下している．図7を見ると，imagickではaggの時にnormalよりも占有率が20\%ptと大きく低下しており，これが性能に影響を与えていると考えられる．
+
+  \paragraph{Swap方式の評価のまとめ}
+  Swap 方式に関するこれまでの評価をまとめる.
+
+  \begin{itemize}
+    \item より積極的にタグ比較を削減したい場合には，Swap\_Aggresive方式を利用すればよく，平均で85\%程度のタグ比較の削減が可能である
+    \item 発行キューの容量効率を低下させたくない場合には，Swap\_Conservative方式にSTDSを適用した方式を用いればよく，占有率の低下を平均3\%pt程度に抑えつつ，60\%程度のタグ比較の削減が可能ある．
+    \item いずれの場合も性能はほとんど低下しないが，Swap\_Aggresiveでは一部のベンチマークで10\%弱性能が低下する．
+  \end{itemize}
+
+  
+  \subsection{レジスタ・フリーリストのセグメント化の修正及びその評価}
+  前回のレポートで，レジスタ・フリーリストのセグメント化による発行キューの容量効率向上について検討した．ここで，レジスタ・フリーリストのセグメント化とは次のようなものであった．レジスタ・フリーリストをIQのセグメント数と同数に分割し，第nレジスタ・フリーリストには，下位ビットがnであるようなレジスタ・タグのみを保持する．そして，リネームの際には，各レジスタ・フリーリストにラウンドロビンにアクセスしてタグを得る．
+  
+  レジスタ・フリーリストのセグメント化によって，発行キューの容量効率が向上すると考えられていたが，結果はセグメント化しない場合とほとんど同じとなり，期待した効果は得られなかった．この原因は，そもそもリネームされるタグには特に制限がないため，セグメント化せずとも発行キューの各セグメントに対して均等に割り当てられていたためである．
+  
+  そこで今回は，ラウンドロビンでレジスタ・フリーリストのセグメントにアクセスするのではなく，発行キューのセグメントのうち最も空き数の多いセグメントに対応するレジスタ・フリーリストのセグメントからタグを供給するように変更した．例えば，4つに分割された発行キューのセグメントにおいて，それぞれの空き数がsegment0 = 10，segment1= 8，segment2 = 12，segment3 = 5であった場合には，もっとも空き数の多いsegment2に対応する，レジスタ・フリーリストの第2 segmentからタグを供給する．
+  
+  これによって，そのタグが表すレジスタをソース・オペランドとするような命令は，空きの多いセグメントに割り当てられるため，セグメント内の命令数が均等になると期待できる．
+  \clearpage
+  \subsubsection{評価モデル}
+  修正したレジスタ・フリーリストのセグメント化に関して評価を行うため，以下の評価モデルを使用した．
+  \begin{itemize}
+    \item base：通常の発行キューを使用したモデル
+    \item normal：通常の提案手法を使用したモデル(Swapを行わない)
+    \item normal+reg：提案手法にレジスタ・フリーリストのセグメント化を適応したモデル
+    \item cons+STDS：提案手法のSwpa\_Conservative方式にSTDSを適応したモデル
+    \item cons+STDS+reg：cons+STDS にレジスタ・フリーリストのセグメント化を適応したモデル
+  \end{itemize}
+  なお，今回の評価では，Swap\_Aggresive 方式に関しては評価を行っていない．これは，Swap\_Aggresive ではタグ比較の削減を優先することを目的としていて，容量効率を上げることは重要ではないためである．
+
+  評価環境は~\ref{sec:config}と同様である．
+
+  \begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.99\hsize]{reduction_int_reg.pdf}
+    \caption{レジスタ・フリーリストのセグメント化による比較器の動作回数削減率(int系)}
+    \label{fig:reduction_int_reg}
+
+    \includegraphics[width=0.99\hsize]{reduction_fp_reg.pdf}
+    \caption{レジスタ・フリーリストのセグメント化による比較器の動作回数削減率(fp系)}
+    \label{fig:reduction_fp_reg}
+    
+    \includegraphics[width=0.99\hsize]{ipc_reg.pdf}
+    \caption{レジスタ・フリーリストのセグメント化による IPC の変化}
+    \label{fig:ipc_reg}
+
+    \includegraphics[width=0.99\hsize]{occupency_reg.pdf}
+    \caption{レジスタ・フリーリストのセグメント化による IQ の占有率}
+    \label{fig:occupency_reg}
+  \end{figure*}
+
+  \subsubsection{修正されたレジスタ・フリーリストのセグメント化の評価}
+  評価結果を，図~\ref{fig:reduction_int_reg}，~\ref{fig:reduction_fp_reg}，~\ref{fig:ipc_reg}，~\ref{fig:occupency_reg}に示す．
+
+  \paragraph{占有率}
+  図~\ref{fig:occupency_reg}の占有率に関して考える．normal と normal+reg を比較すると，すべてのベンチマークで normla+reg のほうが占有率が高く，平均では 5\%pt 高くなっていることが分かる．従って，レジスタ・フリーリストのセグメント化によって，発行キューの容量効率が上昇していると言える．
+
+  cons+STDS と cons+STDS+reg を比較してみても，殆どのベンチマークで占有率が上昇しているが，その上昇幅は normal の時と比較すると小さい．この理由としては，cons+STDS の時点で占有率は Base に近い値を示しており，占有率が上昇する余地がそもそもないためであると考えられる．
+
+  \paragraph{タグ比較の削減}
+  図~\ref{fig:reduction_int_reg}，~\ref{fig:reduction_fp_reg}のタグ比較の削減に関して考える．normal と normal+reg を比較すると， stall reduction が小さくなっていることが分かる．これは，占有率が上昇したという結果と一致する．また，cons+STDS と cons+STDS+reg を比較してみると，segment reduction が増加し，結果として削減率が5\%pt 程度増加していることが分かる．
+
+  \paragraph{性能変化}
+  図~\ref{fig:ipc_reg}の性能変化に関して考える．図より，レジスタ・フリーリスををセグメント化しても性能はほとんど変化しないことが分かる．
+
+  \paragraph{レジスタ・フリーリストのセグメント化のまとめ}
+  これまでの評価を，以下のようにまとめる．
+  \begin{itemize}
+    \item 通常の提案手法にレジスタ・フリーリストのセグメント化を適応した場合，占有率が 5\%pt 程度向上し，容量効率が改善する．
+    \item Swap\_Conservative+STDS にレジスタ・フリーリストのセグメント化を適応した場合，占有率はほとんど変化しないが，セグメント化によるタグ比較の削減率が 5\%pt ほど上昇する．
+  \end{itemize}
+  特にnormal の場合の占有率を下げることができるため，レジスタ・フリーリストのセグメント化は有向であるといえる．
+  
+  \clearpage
+  \subsection{IPCが低下しない原因の考察}
+  これまでの評価で示したように，提案手法では発行キューの容量効率は低下するが，性能は低下しない．しかしベンチマークの中には容量効率が性能に対して重要なものがいくつかある．それらのベンチマークでも性能が低下しない原因に関していくつか考察する．
+  
+  \begin{table}[htb]
+    \caption{容量効率の重要性によるベンチマークの分類}
+    \footnotesize
+    \center
+      \begin{tabular}{l|l} \hline 
+       大 & omnetpp, xalancbmk, bwabes, cactuBSSN, roms \\ \hline
+       中 & mcf, x264, lbm \\ \hline
+       小 & deepsjeng, exchange2, leela, perlbench, xz, cam4, \\ 
+          & fotonik3d, imagik, nab, pop2 \\ \hline
+    \end{tabular}
+    \label{tab:bench_capacity}
+  \end{table}
+
+  \subsubsection{ベンチマークの分類}
+  安藤先生に頂いた資料より，SPEC CPU 2017 ベンチマークを，容量効率が性能に与える影響の大きさに応じて分類した．その分類を~\ref{tab:bench_capacity}に示す．容量効率の低下によって性能が低下すると考えられるのは，表中の大に該当するベンチマークである．
+
+  ここで，大に該当するベンチマークについて図~\ref{fig:occupency_normal}に示された通常の提案手法での占有率の低下を見てみる．大に該当するベンチマークは，Base
+  に対してほとんど占有率が低下していないことが分かる．（平均で2.5\%pt の低下）従って，容量効率の影響が大きいベンチマークでは，そもそも占有率がほとんど低下していないため性能低下が生じていないと言える．  
+
+  \section{研究計画}
+  
+  \begin{itemize}
+    \item 提案手法によって性能が低下しない原因を更に詳しく調べる
+    \begin{itemize}
+      \item ストールしている時の発行キューの占有率
+      \item 1 つの命令が連続してストールする平均サイクル数
+    \end{itemize}
+    \item HSPAICE を用いた電力測定を行う
+    \begin{itemize}
+      \item 測定方法などを松田さんから教わる
+    \end{itemize}
+  \end{itemize}
+  
+  % \section{関連文献}
+  
+  
+  % 参考文献
+  \bibliographystyle{../Config/IEEEtran} 
+  \bibliography{../Config/ref}
+  
+  \end{document}
+  

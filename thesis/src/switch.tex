@@ -1,5 +1,14 @@
 \chapter{SWITCH 方式}
 \label{sec:switch}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{stall_segmentedIQ}
+  \caption{容量効率が低下する例}
+  \label{fig:stall_segmentedIQ}
+\end{figure}
+
+
 \section{容量効率の低下}
 \label{sec:occupency_reduction}
 提案手法には発行キューの容量効率が低下するという問題点がある．この問題点は，発行キューの容量効率が重要なプログラムにおいて，性能低下を引き起こす．本節では，容量効率が低下する原因について説明した後，容量効率の低下により性能低下を引き起こすプログラムの特徴に関して説明する．
