@@ -1,4 +1,4 @@
-% mytitlepage.sty  27 Jan 85
+% titlepage.sty  27 Jan 85
 \def\maketitle{\begin{titlepage}
 \let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
 \null
@@ -38,20 +38,6 @@
 \null
 \end{titlepage}\par}
 
-
-
-
-
-
-\newcommand{\nextyear}{ % 表紙の年を次の年にするためのコマンド
-  \ifnum \the\month<9 % なんとなく9月で区切った
-    \advance\year by -2016 \the\year % 令和にのみ対応
-  \else
-    \advance\year by -2017 \the\year % 令和にのみ対応
-  \fi
-}
-
-
 \def\belectitle{\begin{titlepage}
 \setcounter{page}{0}
 \null
@@ -67,18 +53,14 @@
 \end{minipage} \par
 \vspace{12.0cm}\hspace{2.0cm}
 \begin{minipage}[t]{12cm}
-% \begin{center}
-{\Large\bf
-% 令和 \@date 年 3月 \par
-令和 \nextyear 年 3月 \par
-電気電子情報工学科 \par}
-% \end{center}
-% \hspace{4cm} 
 \begin{center}
-  {\huge\bf
-  \begin{tabular}[t]{c}\@author 
-  \end{tabular}\par}
+{\Large\bf
+令和 \@date 年 3月 \par
+電気電子情報工学科 \par}
 \end{center}
+\hspace{4cm} {\huge\bf
+\begin{tabular}[t]{c}\@author 
+\end{tabular}\par}
 \end{minipage} \par
 \vfil
 \null
@@ -102,16 +84,12 @@
 \vspace{12.0cm}\hspace{2.0cm}
 \begin{minipage}[t]{12cm}
 {\Large\bf
-% 令和 \@date 年 3月 \par
-令和 \nextyear 年 3月 \par
+令和 \@date 年 3月 \par
 情報・通信工学専攻 \par}
-% \hspace{4cm} 
-\begin{center}
-  {\huge\bf
-  \begin{tabular}[t]{c}\@author 
-  \end{tabular}\par}
-\end{center}
-  \end{minipage} \par
-  \vfil
-  \null
-  \end{titlepage}\par}
+\hspace{4cm} {\huge\bf
+\begin{tabular}[t]{c}\@author 
+\end{tabular}\par}
+\end{minipage} \par
+\vfil
+\null
+\end{titlepage}\par}

@@ -1,14 +1,10 @@
-% クラスファイルの指定
-\documentclass[12pt,twoside]{jmyreport}
 
+% スタイルファイルの指定
 % パッケージを使用する場合，ここで全て指定する．
-\usepackage{a4j}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{subfig}
-\usepackage{mytitlepage}
-\usepackage[dvipdfmx]{hyperref}
-\usepackage{pxjahyper}
-\usepackage{amsmath,amssymb}
+\documentstyle[cite,a4j,twoside,12pt,enumerate,graphicx,listings,amssymb,subcaption,amsmath]{jbmdthesis}
+% \documentclass[cite,a4j,twoside,12pt,enumerate,graphicx,listings,amssymb,subcaption,amsmath]{jbmdthesis}
+
+% \usepackage[dvipdfmx]{graphicx}
 
 % ヘッダを追加する
 \pagestyle{headings}
@@ -16,20 +12,20 @@
 % 画像元のパスの追加
 \graphicspath{{figure/}}
 
-
 \begin{document}
 
 % 図，表，節などを参照するためのコマンドを定義
 % これらのコマンドの使い方は template/ 内の Readme.md を参照すること
 \newcommand{\fig}[1]{{図~\ref{fig:#1}}}
-\newcommand{\subfig}[2]{{図~\ref{fig:#1}}~{\subref{fig:#2}}}
+\newcommand{\subfig}[2]{{図~\ref{fig:#1}}~{(\subref{fig:#2})}}
 \newcommand{\tab}[1]{{表~\ref{tab:#1}}}
-\newcommand{\refchap}[1]{{第~\ref{sec:#1}~章}}
+\newcommand{\refchap}[1]{第{\ref{sec:#1}~章}}
 \newcommand{\refsec}[1]{{\ref{sec:#1}~節}}
 \newcommand{\ctext}[1]{\textcircled{\scriptsize{#1}}}
 
 % ページ番号をアラビア数字にする(0,1,2,..)
 \pagenumbering{roman}
+
 
 % ---------- ユーザ入力ここから ----------
 % タイトルページの情報
@@ -43,6 +39,7 @@
 \minfotitle   % 修論
 % \belectitle   % 卒論
 % ---------- ユーザ入力ここまで ----------
+
 
 
 % 概要を出力
@@ -64,6 +61,7 @@
 
 % 行間の調整（これ以降ずっとこの行間）
 \setlength{\baselineskip}{2.2em}
+
 
 
 % ---------- ユーザ入力ここから ----------
@@ -90,17 +88,11 @@
 \include{src/publication}
 % 謝辞
 \include{src/acknowledgement}
-
 % ---------- ユーザ入力ここまで ----------
 
 
 % 参考文献
-
-% 日本語の参考文献を使うときに表示がうまくいかない場合は
-% IEEEをコメントアウトして，andolab2のコメントをはずす
-% andolab2を使う場合は，Makefileも修正する
 \bibliographystyle{IEEEtran} 
-% \bibliographystyle{andolab2}
 \bibliography{ref_swopp}
 
 \end{document}

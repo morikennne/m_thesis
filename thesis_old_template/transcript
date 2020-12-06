@@ -23,16 +23,52 @@ entering extended mode
 (./main.tex
 pLaTeX2e <2017/10/28>+4 (based on LaTeX2e <2017-04-15>)
 Babel <3.18> and hyphenation patterns for 26 language(s) loaded.
-(./jmyreport.cls
-Document Class: jmyreport 2020/12/03 v1.0 my new class based on jreport
-(/usr/share/texlive/texmf-dist/tex/platex/base/jsize12.clo)) (./a4j.sty)
+(/usr/share/texlive/texmf-dist/tex/platex/base/pl209.def
+Entering pLaTeX 2.09 compatibility mode.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latex209.def
+
+          Entering LaTeX 2.09 COMPATIBILITY MODE
+ *************************************************************
+    !!WARNING!!    !!WARNING!!    !!WARNING!!    !!WARNING!!   
+ 
+ This mode attempts to provide an emulation of the LaTeX 2.09
+ author environment so that OLD documents can be successfully
+ processed. It should NOT be used for NEW documents!
+ 
+ New documents should use Standard LaTeX conventions and start
+ with the \documentclass command.
+ 
+ Compatibility mode is UNLIKELY TO WORK with LaTeX 2.09 style
+ files that change any internal macros, especially not with
+ those that change the FONT SELECTION or OUTPUT ROUTINES.
+ 
+ Therefore such style files MUST BE UPDATED to use
+          Current Standard LaTeX: LaTeX2e.
+ If you suspect that you may be using such a style file, which
+ is probably very, very old by now, then you should attempt to
+ get it updated by sending a copy of this error message to the
+ author of that file.
+ *************************************************************
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/tracefnt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty))
+(/usr/share/texlive/texmf-dist/tex/platex/base/ptrace.sty)) (./jbmdthesis.cls
+Document Style `jmyreport'. <18 Dec 88>
+(./jmyrep12.sty) (./mytitlepage.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty) (./a4j.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvipdfmx.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty)
 
@@ -40,27 +76,12 @@ Package caption Warning: Unsupported document class (or package) detected,
 (caption)                usage of the caption package is not recommended.
 See the caption package documentation for explanation.
 
-)) (./mytitlepage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvipdfm.def
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
-(/usr/share/texlive/texmf-dist/tex/platex/pxjahyper/pxjahyper.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (./main.aux
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)) (./main.aux
 (./src/abstract.aux) (./src/introduction.aux) (./src/basic_IQ.aux)
 (./src/related_work.aux) (./src/segment_IQ.aux) (./src/switch.aux
 
@@ -71,14 +92,12 @@ LaTeX Warning: Label `sec:switch' multiply defined.
 LaTeX Warning: Label `sec:switch' multiply defined.
 
 ) (./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
-(./main.out) (./main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
 (./src/abstract.tex) [1] (./main.toc [2]) [3] (./src/introduction.tex
-第 1 章
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd) [1]
+第 1章
+[1]
 
 LaTeX Warning: Reference `sec:issue_queue' on page 2 undefined on input line 19
 .
@@ -87,64 +106,62 @@ LaTeX Warning: Reference `sec:issue_queue' on page 2 undefined on input line 19
 LaTeX Warning: Reference `sec:eval' on page 2 undefined on input line 19.
 
 ) [2] (./src/basic_IQ.tex
-第 2 章
-[3]
+第 2章
+[3] <figure/iq_logic.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 18--19
  [][] 
-[4]
+[4] <figure/wakeup_logic.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 36--37
  [][] 
-
+<figure/cam.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
 [][] 
-[5] [6] [7] [8]) [9] (./src/related_work.tex
-第 3 章
+[5]
+Underfull \vbox (badness 10000) has occurred while \output is active [6]
+[7]
+Underfull \vbox (badness 1168) has occurred while \output is active [8])
+[9] (./src/related_work.tex
+第 3章
 [10] [11]) [12] (./src/segment_IQ.tex
-第 4 章
-
+第 4章
+<figure/segmentedIQ.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 11--12
  [][] 
-[13]
+
+Underfull \vbox (badness 10000) has occurred while \output is active [13]
+<figure/dispatch.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 25--26
  [][] 
-[14] [15] [16] [17] [18]
+<figure/segmentedIQ_wakeup.eps> [14] [15] [16]
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd) [17] [18]
+<figure/sub_segment.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 98--99
  [][] 
 [19] [20] [21]) [22] (./src/switch.tex
-第 5 章
-
+第 5章
+<figure/stall_segmentedIQ.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 6--7
  [][] 
-[23] [24] [25] [26] [27] [28] [29]
+[23] [24] [25] [26] [27] [28] [29] <figure/switch.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 108--109
  [][] 
-[30]) [31] (./src/other_idea.tex
-第 6 章
-[32]
+
+Underfull \vbox (badness 7151) has occurred while \output is active [30])
+[31] (./src/other_idea.tex
+第 6章
+[32] <figure/ltp.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 22--23
  [][] 
-[33] [34]
+[33] [34] <figure/reg_flist.eps>
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 52--53
  [][] 
-[35]) [36] (./src/summary.tex
-第 7 章
-) [37] (./src/publication.tex) [38] (./src/acknowledgement.tex) [39]
-(./main.bbl
-
-LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
-(Font)              using `JT1/gt/m/n' instead on input line 26.
-
-
-LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
-(Font)              using `JY1/gt/m/n' instead on input line 26.
-
-[40] [41] [42]) [43] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
-(./src/basic_IQ.aux) (./src/related_work.aux) (./src/segment_IQ.aux)
-(./src/switch.aux) (./src/other_idea.aux) (./src/summary.aux)
-(./src/publication.aux) (./src/acknowledgement.aux))
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+[35]) [36] [37] (./src/summary.tex
+第 7章
+) [38] (./src/publication.tex) [39] (./src/acknowledgement.tex) [40]
+(./main.bbl [41] [42] [43]) [44] (./main.aux (./src/abstract.aux)
+(./src/introduction.aux) (./src/basic_IQ.aux) (./src/related_work.aux)
+(./src/segment_IQ.aux) (./src/switch.aux) (./src/other_idea.aux)
+(./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -153,5 +170,5 @@ LaTeX Warning: There were multiply-defined labels.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (47 pages, 146380 bytes).
+Output written on main.dvi (48 pages, 123248 bytes).
 Transcript written on main.log.
