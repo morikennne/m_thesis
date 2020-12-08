@@ -103,23 +103,33 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 11--12
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 25--26
  [][] 
 [14] [15] [16] [17] [18]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 98--99
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 113--114
  [][] 
-[19] [20] [21]) [22] (./src/switch.tex
+[19] [20] [21]
+Overfull \hbox (18.62187pt too wide) in paragraph at lines 156--164
+ [][][] 
+) [22] (./src/switch.tex
 第 5 章
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 6--7
  [][] 
-[23] [24]
+[23] [24] [25] [26]
+Overfull \hbox (32.84825pt too wide) in paragraph at lines 83--91
+ [][][] 
+[27] [28]
+Overfull \hbox (32.84825pt too wide) in paragraph at lines 121--129
+ [][][] 
+[29] [30]
 
-LaTeX Warning: Reference `sec:two_mode' on page 25 undefined on input line 48.
+LaTeX Warning: Reference `sec:eval_switch' on page 31 undefined on input line 1
+45.
 
-[25] [26] [27] [28] [29]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 109--110
+[31]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 162--163
  [][] 
-[30]) [31] (./src/eval.tex
+[32]) [33] (./src/eval.tex
 第 6 章
-[32] [33]
+[34] [35]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 107--108
  [][] 
 
@@ -128,7 +138,7 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 113--114
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 119--120
  [][] 
-[34] [35] [36]
+[36] [37] [38]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 149--150
  [][] 
 
@@ -140,19 +150,14 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[37]
-
-LaTeX Warning: Reference `sec:two_mode' on page 38 undefined on input line 178.
-
-
-[38] [39]) [40] [41] (./src/summary.tex
+[39] [40] [41]) [42] [43] (./src/summary.tex
 第 7 章
-) [42] (./src/appendix1.tex
+) [44] (./src/appendix1.tex
 付 録 A  
-[43]
+[45]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 22--23
  [][] 
-[44]) [45] (./src/publication.tex) [46] (./src/acknowledgement.tex) [47]
+[46]) [47] (./src/publication.tex) [48] (./src/acknowledgement.tex) [49]
 (./main.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -162,7 +167,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[48] [49] [50]) [51] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+[50] [51] [52]) [53] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
 (./src/basic_IQ.aux) (./src/related_work.aux) (./src/segment_IQ.aux)
 (./src/switch.aux) (./src/eval.aux) (./src/summary.aux) (./src/appendix1.aux)
 (./src/publication.aux) (./src/acknowledgement.aux))
@@ -177,5 +182,5 @@ LaTeX Warning: There were multiply-defined labels.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (55 pages, 169528 bytes).
+Output written on main.dvi (57 pages, 182836 bytes).
 Transcript written on main.log.
