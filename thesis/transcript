@@ -150,23 +150,29 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[39] [40] [41] [42] [43]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 204--205
+[39] [40] [41] [42]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 202--203
+ [][] 
+[43] [44]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 235--236
+ [][] 
+[45]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 249--250
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 210--211
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 256--257
  [][] 
-
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 216--217
+[46]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 273--274
  [][] 
-[44]) [45] [46] (./src/summary.tex
+[47]) [48] [49] (./src/summary.tex
 第 7 章
-) [47] (./src/appendix1.tex
+) [50] (./src/appendix1.tex
 付 録 A  
-[48]
+[51]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 22--23
  [][] 
-[49]) [50] (./src/publication.tex) [51] (./src/acknowledgement.tex) [52]
+[52]) [53] (./src/publication.tex) [54] (./src/acknowledgement.tex) [55]
 (./main.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -176,7 +182,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[53] [54] [55]) [56] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+[56] [57] [58]) [59] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
 (./src/basic_IQ.aux) (./src/related_work.aux) (./src/segment_IQ.aux)
 (./src/switch.aux) (./src/eval.aux) (./src/summary.aux) (./src/appendix1.aux)
 (./src/publication.aux) (./src/acknowledgement.aux))
@@ -191,5 +197,5 @@ LaTeX Warning: There were multiply-defined labels.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (60 pages, 189040 bytes).
+Output written on main.dvi (63 pages, 197376 bytes).
 Transcript written on main.log.
