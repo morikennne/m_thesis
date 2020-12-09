@@ -199,5 +199,33 @@ SWITCH 方式において，ILP と ILP の高低を判定するために使用�
 
 評価の流れとしては，まずサブ・セグメントを使用しない(16，1)の場合で評価を行う．そして，(16,1)の場合に最適とされたしきい値が，サブ・セグメントを使用する(8，2)の場合においても有効かどうかを確認する．
 
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{switch_IPC_rate}
+  \caption{IPC による SWITCH 方式の制御}
+  \label{fig:switch_IPC_rate}
+\end{figure}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{switch_IPC_comp}
+  \caption{IPC による制御を行った SWITCH 方式によるタグ比較削減}
+  \label{fig:switch_IPC_comp}
+\end{figure}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{switch_IPC_performance}
+  \caption{IPC による制御を行った SWITCH 方式による性能低下}
+  \label{fig:switch_IPC_performance}
+\end{figure}
+
 \subsection{ILP の評価値：IPC}
-ILP の評価として，IPC を使用する場合の評価を行った．
+ILP の評価として，IPC を使用する場合の評価を行った．本評価は，セグメントの数を(16，1)で行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
+
+\subsubsection{IPC のしきい値の評価}
+\fig{switch_IPC_rate}に，IPC のしきい値を変化させた場合の，AGGRESSIVE モードで実行される割合を示す．各判例の IPC=X は，ILP が高いと判定する IPC のしきい値をX とした場合を表す．また，avg は全ベンチマークの平均を，high ILP avg は ILP の高いベンチマークでの平均を示している． 
+
+当図より，しきい値の IPC が高くなるほど，AGGRESSIVE で実行される割合が多くなっていることが分かる．これは，ILP が高いと判定される基準が厳しくなるためである．ILP の高いベンチマークに関して見ると，多くのベンチマークにおいて，しきい値が 3.5 の場合は AGGRESSIVE モードの割合が高いが，しきい値が 4.0 になると AGGRESSIVE モードの割合が急激に増加していることが分かる．high ILP avg を見ると，しきい値が 3.5 の場合は AGGRESSIVE モードの割合は 5\% 程度であるが，しきい値が 4.0 の場合は AGGRESSIVE モードの割合は 35\% 程度と高くなる．
+
+ILP が高い場合は CONSERVATIVE モードで実行することが望ましい．従って，IPC のしきい値は，3.5 程度が適当であるといえる．
+
+\subsubsection{しきい値の違いによる提案手法のタグ比較削減と性能低下}
