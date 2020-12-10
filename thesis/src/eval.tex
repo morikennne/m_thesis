@@ -7,7 +7,7 @@
 \label{sec:eval_env}
 評価環境について説明する．性能やタグ比較回数を評価するために，SimpleScalar v.3.0a をベースに作成したシュミレータを使用した．評価で仮定したプロセッサ構成を\tab{base_config}に示す．
 
-提案手法の各種パラメータを，\tab{subseg_config}と\tab{non_subseg_config}に示す．これらのパラメータは，5\% 程度の性能低下と引き換えにできるだけ多くのタグ比較回数削減を達成できるよう，実験によって求めた最適なパラメータである．\tab{subseg_config} はSWITCH 方式をサブ・セグメントと併用する場合に最適なパラメータを，\tab{non_subseg_config} はサブ・セグメントを使用しない場合に最適なパラメータを示している．各パラメータの評価に関しては，で説明する．
+提案手法の SWITCH 方式に関するパラメータを，\tab{switch_config}に示す．これらのパラメータは，\refsec{eval_threshold} で説明する評価に基づいて決定した最適なパラメータである．
 
 測定ベンチマークには，SPEC CPU 2017 ベンチマークのうち，int 系 9 本と fp 系 9 本の計 18 本を使用した．プログラムの入力には ref データ・セットを用いた．ベンチマークの測定区間は，プログラムの先頭から 16B 命令をスキップした後の 100M 命令である．
 
@@ -43,35 +43,22 @@
 \end{table}
 
 \begin{table}[tb]
-  \caption{提案手法のパラメータ構成(サブ・セグメント使用)}
+  \caption{提案手法の SWITCH 方式に関するパラメータ構成}
   \footnotesize
   \center
     \begin{tabular}{l|l} \hline \hline
-    メイン・セグメント数 & 8 \\
-    サブ・セグメント数 & 2 \\
     切り替えインターバル & 10K instructions \\
     ISR しきい値 & 15\% \\
     LLC MPKI しきい値 & 2.0 \\ \hline 
   \end{tabular}
-  \label{tab:subseg_config}
-  \caption{提案手法のパラメータ構成(サブ・セグメント不使用)}
-  \footnotesize
-  \center
-    \begin{tabular}{l|l} \hline \hline
-    メイン・セグメント数 & 8 \\
-    サブ・セグメント数 & 2 \\
-    切り替えインターバル & 10K instructions \\
-    ISR しきい値 & 15\% \\
-    LLC MPKI しきい値 & 2.0 \\ \hline 
-  \end{tabular}
-  \label{tab:non_subseg_config}
+  \label{tab:switch_config}
 \end{table}
 
 \subsection{ベンチマークの分類}
 提案手法は，プログラムの ILP や MLP に着目した制御を行う．そこで，SPEC CPU 2017 ベンチマークを ILP が高いベンチマーク，MLP が高いベンチマーク，いずれも低いベンチマークの 3 種類に分類する．ここて，ILP が高い及びMLP が高いベンチマークとは，次の条件を満たすベンチマークである．
 \begin{itemize}
-  \item ILP：IPCが 3.5以上のベンチマーク
-  \item MLP：LLC MPKI が2 以上のベンチマーク
+  \item high ILP：IPCが 3.5以上のベンチマーク
+  \item high MLP：LLC MPKI が2 以上のベンチマーク
 \end{itemize}
 
 分類結果を\tab{classification}に示す．また，以降に示す図において，ILP(青色) 及びMLP(赤色)の表記は，そのベンチマークが ILP もしくは MLP が高いことを表す．
@@ -90,8 +77,8 @@
   \label{tab:classification}
 \end{table}
 
-\section{評価結果：提案手法の効果}
-提案手法によるタグ比較回数の削減と性能低下に関して評価を行う．評価モデルは以下の 4 種類である．
+\subsection{評価モデル}
+評価モデルは以下の 4 種類である．
 \begin{itemize}
   \item BASE：セグメント化しない通常の IQ を使用するモデル
   \item AGGRESSIVE：提案手法において常に AGGRESSIVE モードで実行するモデル
@@ -99,7 +86,8 @@
   \item SWITCH：提案手法の SWITCH 方式を使用するモデル 
 \end{itemize}
 
-なお，評価に関してはサブ・セグメントを使用しない場合と使用する場合に関してそれぞれ評価を行う．
+\section{提案手法によるタグ比較回数削減と性能低下の評価}
+提案手法によるタグ比較回数の削減と性能低下に関して評価を行う．なお，評価に関してはサブ・セグメントを使用しない場合と使用する場合に関してそれぞれ評価を行う．
 
 \begin{figure}[htb]
   \centering
@@ -120,17 +108,18 @@
   \label{fig:occupancy_16_1}
 \end{figure}
 
-\subsection{サブ・セグメントを使用しない場合}
-サブ・セグメントを使用しない場合の提案手法に関して評価する．提案手法に関するパラメータは\tab{non_subseg_config}に示したものを使用する．セグメント数は 16 であり，(16, 1)と表記する．
+サブ・セグメントを使用しない場合の提案手法に関して評価する．セグメント数は 16 とした．このセグメント数は，提案手法による性能低下とタグ比較回数のバランスを考慮し，提案手法の特徴をよく評価できるパラメータであると考え選んだものである．
 
-\subsubsection{タグ比較回数の削減}
+なお，以降 (メイン・セグメント数，サブセグメント数) の形式でセグメント数を表記する．今回の場合は(16, 1)となる．
+
+\subsection{タグ比較回数の削減}
 \fig{comp_16_1}に，提案手法の BASE モデルに対するタグ比較回数の割合をベンチマークごとに示す．AGGRESSIVE と CONSERVATIVE のタグ比較回数削減に関しては、同図より，いずれのベンチマークにおいても，AGGRESSIVE のほうがタグ比較回数が少ないことがわかる．その差は 平均で 20\% 程度となっており，AGGRESSIVE モードのタグ比較回数を積極的に削減できるという性質が確認できる。
 
 同図より SWITCH 方式では，平均で BASE モデルの 30\% 程度のタグ比較回数となっており，70\% の削減を達成している．
 
 SWITCH 方式では，ILP や MLP の高いベンチマークにおいてはCONSERVATIVE と同程度のタグ比較回数であるのに対して，そうでないベンチマーク(deepsjeng，x264など)においては AGGRESSIVE に近いタグ比較回数となっていることがわかる．したがって，発行キューの容量効率が重要でないベンチマークにおいては，AGGRESSIVE モードを選択して積極的にタグ比較回数の削減が行えていることがわかる．
 
-\subsubsection{性能低下}
+\subsection{性能低下}
 \fig{ipc_16_1}に，BASE に対する提案手法による性能低下をベンチマークごとに示す．同図より，SWITCH 方式による性能低下は最大で 4\% 程度であり，多くのベンチマークでは 0\% に近く性能はほとんど低下しないということが確認できる．
 
 SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が高い cactusBSSN や imagick，lbm などのベンチマークにおいて，AGGRESSIVE では大きく性能低下しているのに対して，CONSERVATIVE では性能低下が抑制されていることが分かる．そして SWITCH では，CONSERVATIVE と同程度の性能低下にとどまっている．従って，容量効率が性能にとって重要なプログラムにおいて，SWITCH 方式によって性能低下が抑制できていることが分かる．
@@ -168,10 +157,10 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
   \label{fig:conservative_sub_seg}
 \end{figure}
 
-\subsection{サブ・セグメントを使用する場合}
-サブ・セグメントを使用する場合の提案手法に関して評価する．提案手法に関するパラメータは\tab{subseg_config}に示したものを使用する．メイン・セグメント数は 8，サブ・セグメント数は 2 であり，(8, 2)と表記する．
+\section{サブ・セグメントに関する評価}
+サブ・セグメントを使用する場合の提案手法に関して評価する．メイン・セグメント数は 8，サブ・セグメント数は 2 であり，(8, 2)と表記する．このセグメント数は，(16，1) の場合とセグメントの総数が同じであり，比較の対象として適していると考え選んだものである．
 
-\subsubsection{タグ比較回数の削減}
+\subsection{タグ比較回数の削減}
 \fig{comp_8_2}に，提案手法の BASE モデルに対するタグ比較回数の割合をベンチマークごとに示す．AGGRESSIVE と CONSERVATIVE を比較すると，(16, 1)の場合と同様に，AGGRESSIVE のタグ比較回数が少ないことが分かる．
 
 セグメントの総数が同じである (16, 1)と (8, 2)の CONSERVATIVE を比較すると，(16, 1)の場合が平均で 40\% 程度であるのに対して， (8, 2) では 20 \% 程度と，(8, 2)のほうがより削減できていることが分かる．これは，サブ・セグメントを使用する場合，\refsec{two_mode}で説明した CONSERVATIVE モードでのストールの回避を行った際にも，タグ比較の削減が可能となるためである．\fig{conservative_sub_seg}を用いて詳しく説明する．
@@ -184,7 +173,7 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
 
 最後に SWITCH 方式に関して評価する，平均で BASE モデルの 20\% 程度のタグ比較回数となっており，80\% の削減を達成している．これは，セグメントの総数が同じである(16, 1) と比較しても高い削減率であり，サブ・セグメントが有効であると言える．
 
-\subsubsection{性能低下}
+\subsection{性能低下}
 \fig{ipc_8_2}に，BASE に対する提案手法による性能低下をベンチマークごとに示す．同図より，SWITCH 方式による性能低下は最大で 4\% 程度であり，多くのベンチマークでは 0\% に近く性能はほとんど低下しないということが確認できる．
 
 AGGRESSIVE の性能低下率に関して考える．(8,2) では，(16,1)と比較して AGGRESSIVE の性能低下率が低いことが分かる．これは，サブ・セグメントによって AGGRESSIVE モードでの容量効率の低下が抑制されているためであると考えられる．\fig{occupancy_16_1}と\fig{occupancy_8_2}の占有率を比較すると，(16, 1)の場合は平均で 40\% 程度であった占有率が(8, 2)では，平均で 50\% となっている．また，imagick に関して見てみると，(16,1)の AGGRESSIVE では占有率が 30\% 程度で，性能低下が10\% であるのに対して， (8,2) の AGGRESSIVE では占有率が 60\% 近くまで上昇しており，その結果性能低下が 2\% 以下となっている．
@@ -194,6 +183,7 @@ AGGRESSIVE の性能低下率に関して考える．(8,2) では，(16,1)と比
 最後に，SWITCH 方式の有効性に関して説明する．(8, 2)の場合，サブ・セグメントが非常に有効である結果，AGGRESSIVE での大幅な性能低下が見られないため，(16,1)の場合と比較して SWITCH 方式の有効性は高くないように見られる．しかし， imagick や lbm などのベンチマークにおいては AGGRESSIVE で発生する性能低下を抑制できている．また，サブ・セグメントを使用しているため，CONSERVATIVE でのタグ比較削減率が高く，その結果 SWITCH 方式自体のタグ比較削減率も高くなっている．
 
 \section{SWITCH 方式のしきい値に関する評価}
+\label{sec:eval_threshold}
 SWITCH 方式において，ILP と ILP の高低を判定するために使用するしきい値に関する評価を行う．
 
 \begin{figure}[htb]
@@ -202,18 +192,6 @@ SWITCH 方式において，ILP と ILP の高低を判定するために使用�
   \caption{IPC による SWITCH 方式の制御}
   \label{fig:switch_IPC_rate}
 \end{figure}
-% \begin{figure}[htb]
-%   \centering
-%   \includegraphics[keepaspectratio, scale=.8]{switch_IPC_comp}
-%   \caption{IPC による制御を行った SWITCH 方式によるタグ比較削減}
-%   \label{fig:switch_IPC_comp}
-% \end{figure}
-% \begin{figure}[htb]
-%   \centering
-%   \includegraphics[keepaspectratio, scale=.8]{switch_IPC_performance}
-%   \caption{IPC による制御を行った SWITCH 方式による性能低下}
-%   \label{fig:switch_IPC_performance}
-% \end{figure}
 
 \subsection{ILP の評価値}
 ILP を評価する値として IPC と ISR の評価を行う．評価の方針としては，まず IPC と ISR のしきい値に関して適当な値を求める．適当ななしきい値は，しきい値を変化させた場合に AGGRESSIVE モードで実行される割合を評価することによって決定する．
@@ -236,7 +214,7 @@ ILP が高い場合は CONSERVATIVE モードで実行することが望まし�
   \label{fig:switch_ISR_rate}
 \end{figure}
 
-\subsubsection{IPC による制御}
+\subsubsection{ISR による制御}
 ILP の評価として，ISR を使用する場合の評価を行った．I評価は IPC の場合と同様にセグメントの数を(16，1)として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{switch_ISR_rate}に，ISR のしきい値を変化させた場合の，AGGRESSIVE モードで実行される割合を示す．各判例の ISR=X は，ILP が高いと判定する ISR のしきい値を X とした場合を表す．
@@ -260,9 +238,11 @@ ILP が高い場合は CONSERVATIVE モードで実行することが望まし�
 \subsubsection{IPC と ISR の比較}
 \fig{switch_ILP_performance}に，IPC と ISR を用いて制御を行う SWITCH 方式での性能低下を示す．同図より，ILP が高いベンチマークにおいては，ILP と ISR いずれの指標においても正しく評価できており，結果として SWITCH による性能低下が CONSERVATIVE と同程度に抑制できていることがわかる．また，ILP が高くないベンチマークにおいては，IPC と ISR による制御において大きな差はみられない．平均を見ても，IPC と ISR は同程度であると言える．
 
-\fig{switch_ILP_comp}に，IPC と ISR を用いて制御を行う SWITCH 方式でのタグ比較回数を示す．タグ比較回数も，性能低下と同様に IPC と ISR で大きな差は見られない．これらの評価から， 2 つの指標の有効性に優位な差はなく，どちらの指標を用いても良いと思われる．
+\fig{switch_ILP_comp}に，IPC と ISR を用いて制御を行う SWITCH 方式でのタグ比較回数を示す．タグ比較回数も，性能低下と同様に IPC と ISR で大きな差は見られないが，exchange2 と fotonik3d に関しては，IPC を用いた制御のほうが ISR を用いた制御よりもタグ比較回数が少ないことが分かる．この理由は，この 2 つベンチマークについては，IPC を用いた制御で ILP が低いと判定されているのに対して，ISR を用いた制御では ILP が低いと判定されているためである．
 
-本論文では，ILP の評価値として一般的である IPC の他に，ISR という指標も有効であるということを主張するために，ISR を ILP を評価する指標として用いることとする．また，ISR のしきい値は 10 が適しているとする．
+exchange2 及び fotonik3d は提案手法によって性能低下を起こさないベンチマークであるため，ILP が高いと判定されて CONSERVATIVE モードで実行されることは望ましくない．従って，IPC による制御のほうが適していると考えられる．
+
+以上の評価から，ISR による制御は一部の ILP が低いベンチマークを ILP が高いと判定してしまうため，IPC を 用いた制御のほうがより適していると言える．SWITCH 方式における ILP の判定は，IPC を用いることとし，ILP が高いとする IPC のしきい値は 3.5 とする．
 
 \subsection{MLPの評価値}
 MLP を評価する値として LLC MPKI の評価を行う．評価の方針としては，LLC MPKI のしきい値に関して適当な値を求める．適当ななしきい値は，しきい値を変化させた場合に AGGRESSIVE モードで実行される割合を評価することによって決定する．
@@ -282,3 +262,32 @@ MLP を評価する値として LLC MPKI の評価を行う．評価の方針と
 当図より，LLC MPKI しきい値が高くなるほど，AGGRESSIVE で実行される割合が多くなっていることが分かる．これは，LLC MPKI が高いと判定される基準が厳しくなるためである．MLP の高いベンチマークに関して考える．omnetpp と lbm においては，しきい値が 2 以下場合は AGGRESSIVE モードの割合が低いが，しきい値が 3 以上 になると AGGRESSIVE モードの割合が急激に増加していることが分かる．xalancbmk に関しては，MLP の高いベンチマークの中でも特にメモリ・インテンシブなベンチマーク(LLC MPKI が 10 程度)であるため，しきい値を 5 まで増加させても AGGRESSIVE の割合は増加しない．
 
 MLP が高い場合は CONSERVATIVE モードで実行することが望ましい．従って，MPC のしきい値は，2 程度が適当であるといえる．
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{segment_num}
+  \caption{セグメント数の違いによるタグ比較回数の削減と性能低下}
+  \label{fig:segment_num}
+\end{figure}
+
+\section{セグメントの分割数に関する評価}
+\label{sec:ipc_comp}
+セグメントの分割数を変化させて提案手法を評価し，最適であるセグメントの分割数を決定する．評価の基準としては，提案手法において次の条件を満たすセグメント数の組み合わせを最適と判断する．
+\begin{itemize}
+  \item 性能低下が全ベンチマークで 5\% 以下
+  \item 全ベンチマークのタグ比較回数が最も少ない
+\end{itemize}
+
+SWITCH，AGGRESSIVE，CONSERAVTIVE についてそれぞれ最適なセグメント数を求める．
+
+\subsection{AGGRESSIVE におけるセグメント数の評価}
+
+\subsection{CONSERVATIVE におけるセグメント数の評価}
+
+\subsection{SWITCH におけるセグメント数の評価}
+\fig{ipc_comp}に，メイン・セグメント数とサブ・セグメント数を変化させた場合の，SWITCH 方式での性能低下とタグ比較回数の散布図を示す．図中の各点にはメイン・セグメント数とサブ・セグメント数を（メイン・セグメント数，サブ・セグメント数）という形式で付与している．横軸は最も性能低下が大きかったベンチマークにおける性能低下を示し，縦軸は全ベンチマークでの平均のタグ比較回数を示す．
+
+同図より，セグメントの総数が増えると，タグ比較回数はより削減されるが，同時に性能低下も大きくなることがわかる．
+
+\fig{segment_num}において性能低下が 5\% より小さいセグメント数の組み合わせのうち，最もタグ比較回数が削減される（8,2）を最適が最適な組み合わせである．このときのタグ比較回数は 22\%(78\% 削減)となる．また，サブ・セグメントを使用しない場合に最適な組み合わせは(16，1)であり，タグ比較回数は34\%(66\% 削減) となっている．
+
