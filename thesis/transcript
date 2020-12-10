@@ -66,8 +66,11 @@ For additional information on amsmath, use the `?' option.
 
 LaTeX Warning: Label `sec:switch' multiply defined.
 
-) (./src/eval.aux) (./src/summary.aux) (./src/publication.aux)
-(./src/acknowledgement.aux))
+) (./src/eval.aux
+
+LaTeX Warning: Label `fig:moderate_16_1' multiply defined.
+
+) (./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./main.out) (./main.out)
@@ -129,52 +132,63 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 162--163
 [32]) [33] (./src/eval.tex
 第 6 章
 [34]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 94--95
- [][] 
-[35]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 100--101
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 90--91
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 106--107
- [][] 
-[36] [37] [38]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 137--138
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 96--97
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 143--144
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 102--103
+ [][] 
+[35] [36] [37] [38]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 134--135
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 149--150
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 140--141
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 146--147
  [][] 
-[39] [40] [41] [42]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 191--192
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 169--170
  [][] 
-[43] [44]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 212--213
+[39] [40] [41] [42] [43]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 213--214
+ [][] 
+[44]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 234--235
  [][] 
 [45]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 226--227
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 248--249
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 233--234
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 255--256
  [][] 
-[46]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 250--251
- [][] 
-[47]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 266--267
+[46] [47]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 274--275
  [][] 
 [48]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 290--291
+ [][] 
 
-LaTeX Warning: Reference `fig:ipc_comp' on page 49 undefined on input line 286.
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 297--298
+ [][] 
+[49]
+
+LaTeX Warning: Reference `fig:moderate_8_2' on page 50 undefined on input line 
+307.
 
 
-[49]) [50] (./src/summary.tex
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 312--313
+ [][] 
+[50]
+
+LaTeX Warning: Reference `fig:ipc_comp' on page 51 undefined on input line 326.
+
+
+) [51] [52] (./src/summary.tex
 第 7 章
-) [51] (./src/publication.tex) [52] (./src/acknowledgement.tex) [53]
+) [53] (./src/publication.tex) [54] (./src/acknowledgement.tex) [55]
 (./main.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -184,7 +198,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[54] [55] [56]) [57] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
+[56] [57] [58]) [59] (./main.aux (./src/abstract.aux) (./src/introduction.aux)
 (./src/basic_IQ.aux) (./src/related_work.aux) (./src/segment_IQ.aux)
 (./src/switch.aux) (./src/eval.aux) (./src/summary.aux) (./src/publication.aux)
 (./src/acknowledgement.aux))
@@ -199,5 +213,5 @@ LaTeX Warning: There were multiply-defined labels.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (61 pages, 193212 bytes).
+Output written on main.dvi (63 pages, 196968 bytes).
 Transcript written on main.log.
