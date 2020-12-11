@@ -28,6 +28,10 @@
 \newcommand{\refsec}[1]{{\ref{sec:#1}~節}}
 \newcommand{\ctext}[1]{\textcircled{\scriptsize{#1}}}
 
+% 脚注が 1 ページに表示されるようにする
+% 脚注が長い場合は数字を増やせば良い
+\interfootnotelinepenalty=200
+
 % ページ番号をアラビア数字にする(0,1,2,..)
 \pagenumbering{roman}
 
@@ -70,8 +74,8 @@
 \include{src/introduction}
 
 % 本文
-\include{src/basic_IQ}
 \include{src/related_work}
+\include{src/basic_IQ}
 \include{src/segment_IQ}
 \include{src/switch}
 \include{src/eval}

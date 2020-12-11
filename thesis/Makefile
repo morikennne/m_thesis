@@ -19,6 +19,7 @@ main.dvi: $(SOURCE)
 	platex -shell-escape $(SOURCE_BASENAME)
 	# andolab2 を使う場合は bibtex を pbibtex に変更する
 	bibtex $(SOURCE_BASENAME) > transcript
+	# pbibtex $(SOURCE_BASENAME) > transcript
 	platex -shell-escape $(SOURCE_BASENAME) > /dev/null
 	platex -shell-escape $(SOURCE_BASENAME) >> transcript
 
