@@ -447,6 +447,26 @@
 \def\@endpart{\vfil\newpage
    \if@twoside\null\thispagestyle{empty}\newpage\fi
    \if@tempswa\twocolumn\fi}
+\newcommand{\bibchap}{%
+  %  \if@openright\cleardoublepage\else\clearpage\fi
+  %  \thispagestyle{jpl@in}%
+  %  \global\@topnum\z@
+  %  \@afterindenttrue
+   \secdef\@bibchapter\@schapter}
+\def\@bibchapter[#1]#2{%
+  \ifnum \c@secnumdepth >\m@ne
+    \refstepcounter{chapter}%
+    \typeout{\@chapapp\space\thechapter\space\@chappos}%
+    \addcontentsline{toc}{chapter}%
+      {\protect\numberline{\@chapapp\thechapter\@chappos}#1}%
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \chaptermark{#1}%
+  \addtocontents{lof}{\protect\addvspace{10\p@}}%
+  \addtocontents{lot}{\protect\addvspace{10\p@}}%
+  % \@makechapterhead{#2}\@afterheading
+  }
 \newcommand{\chapter}{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{jpl@in}%
@@ -513,6 +533,12 @@
    {3.25ex \@plus 1ex \@minus .2ex}%
    {-1em}%
    {\reset@font\normalsize\bfseries}}
+\newcommand{\bibhead}{\par
+   \setcounter{chapter}{0}%
+   \setcounter{section}{0}%
+   \renewcommand{\@chapapp}{}%
+   \renewcommand{\@chappos}{\bibname}%
+   \renewcommand{\thechapter}{}}
 \newcommand{\appendix}{\par
   \setcounter{chapter}{0}%
   \setcounter{section}{0}%

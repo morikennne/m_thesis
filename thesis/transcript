@@ -169,6 +169,7 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 334--335
 [51] [52]) [53] (./src/summary.tex
 第 7 章
 ) [54] (./src/publication.tex) [55] (./src/acknowledgement.tex) [56]
+  参考文献
 (./main.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -187,5 +188,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (65 pages, 206872 bytes).
+Output written on main.dvi (65 pages, 207084 bytes).
 Transcript written on main.log.
