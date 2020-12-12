@@ -72,61 +72,6 @@ IQ はアウト・オブ・オーダ実行を行うプロセッサにおいて�
 ランダム・キューでは，IQ の空きエントリのインデクスを保持するフリー・リストを用意する．ディスパッチ時には，フリー・リストから読み出したインデクスが指す IQ のエントリに命令を書き込む．IQ から命令が発行されエントリが無効化されると，そのインデクスをフリー・リストへ返す．フリー・リストは FIFO バッファで管理される．
 
 \subsection{エイジ論理付きランダム・キュー}
-ランダム・キューにおける発行優先度の欠点を緩和するため，ランダム．キューは一般にエイジ論理と併用される~\cite{Alpha21464}．エイジ論理は選択論理と並列に動作する回路で，発行要求が出された命令の中で最も古い 1 命令を選ぶ．最も古い命令はクリティカル・パス上の命令である可能性が高いため，これを優先して発行することができ，結果としてエイジ論理付きランダム・キューは通常のランダム・キュート比較して性能が大きく向上する．
+ランダム・キューにおける発行優先度の欠点を緩和するため，ランダム．キューは一般にエイジ論理と併用される~\cite{Alpha21464}．エイジ論理は選択論理と並列に動作する回路で，発行要求が出された命令の中で最も古い 1 命令を選ぶ．最も古い命令はクリティカル・パス上の命令である可能性が高いため，これを優先して発行することができ，結果としてエイジ論理付きランダム・キューは通常のランダム・キューと比較して性能が大きく向上する．
 
 本研究における IQ は，エイジ論理付きのランダム・キューを使用する．
-
-% \section{IQ の問題点}
-% \label{sec:iq_problem}
-% IQ は電力密度の大きいホットスポットとして知られている．この主な原因は，ウェイクアップ論理での消費電力である．論文によると，ウェイクアップ論理の消費電力はIQ 全体の20\% であり，削減の必要がある．
-
-% ウェイクアップ論理での消費電力が大きい理由として，タグ比較回路が挙げられる．タグ比較に使用する CAM は，$IQS \times IW \times 2$個必要である．ここで，IQS は IQ のエントリ数， IW は発行幅 を表す．現在想定しているプロセッサ構成では，IQS は 128 エントリ，IQ は 8 命令であるため，CAM の総数は 2048 個となる．
-
-% これだけ多くの CAM が毎サイクル動作するため，ウェイクアップ論理の電力密度は大きくなる．本研究では，ウェイクアップ時のタグ比較によって生じる消費電力を削減することを目的とする．
-
-
-
-
-
-
-
-
-
-
-
-
-% 図を使う例: figure 環境を使用
-
-% \begin{figure}[tb]
-%   \centering
-%   \includegraphics[scale=.5]{hoge.eps}
-%   \caption{例１}
-%   \label{fig:hoge}
-% \end{figure}
-
-
-
-% 副図を使う例: minipage と subcaption を使用
-
-% \begin{figure}[tb]
-%   \begin{minipage}[htb]{1\hsize}
-%     \centering 
-%     \includegraphics[keepaspectratio, scale=0.8]{hap_pipeline.eps}
-%     \vspace{.3cm} % <-- vspace で縦方向の位置を調節できる
-%     \subcaption{従来のパイプライン (HAP: Hit-Assuming Pipeline)}
-%     \label{fig:hap_pipeline}
-%   \end{minipage}
-%   \begin{minipage}[htb]{.97\hsize}
-%     \vspace{1.3cm}
-%     \centering
-%     \includegraphics[keepaspectratio, scale=0.8]{map_pipeline.eps}
-%     \vspace{.3cm}
-%     \subcaption{MAP: Miss-Assuming Pipeline}
-%     \label{fig:map_pipeline}
-%   \end{minipage}
-%   \vspace{.8cm}
-%   \caption{各パイプラインの命令処理工程}
-%   \label{fig:pipeline}
-% \end{figure}
-
-
