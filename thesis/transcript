@@ -122,53 +122,53 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 164--165
 [32]) [33] (./src/eval.tex
 第 6 章
 [34] [35]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 90--91
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 96--97
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 105--106
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 102--103
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 111--112
  [][] 
-[36] [37] [38]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 136--137
- [][] 
-
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 143--144
+[36] [37] [38] [39]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 150--151
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 154--155
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 156--157
- [][] 
-[39] [40] [41] [42] [43]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 218--219
- [][] 
-[44]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 239--240
- [][] 
-[45] [46]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 255--256
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 262--263
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[47]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 281--282
+[40] [41] [42] [43] [44]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 229--230
  [][] 
-[48] [49]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 297--298
+[45]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 250--251
+ [][] 
+[46]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 266--267
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 304--305
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 273--274
+ [][] 
+[47] [48]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 292--293
+ [][] 
+[49]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 310--311
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 317--318
  [][] 
 [50]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 319--320
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 332--333
  [][] 
-[51]) [52] (./src/summary.tex
+[51]) [52] [53] (./src/summary.tex
 第 7 章
-) [53] (./src/publication.tex) [54] (./src/acknowledgement.tex) [55]
+) [54] (./src/publication.tex) [55] (./src/acknowledgement.tex) [56]
 (./main.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -178,7 +178,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[56] [57] [58] [59]) [60] (./main.aux (./src/abstract.aux)
+[57] [58] [59] [60]) [61] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
 (./src/publication.aux) (./src/acknowledgement.aux))
@@ -187,5 +187,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (64 pages, 204400 bytes).
+Output written on main.dvi (65 pages, 206444 bytes).
 Transcript written on main.log.
