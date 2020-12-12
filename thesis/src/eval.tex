@@ -1,7 +1,7 @@
 
 \chapter{評価}
 \label{sec:eval}
-本章では，提案手法の評価を行う．\refsec{eval_env}で評価環境について説明し，\refsec{eval_segIQ}で提案手法によるタグ比較回数と性能低下の評価を行う．\refsec{eval_subseg}でサブ・セグメントに関する評価を説明したのち，\refsec{eval_threshold}で SWITCH 方式のパラメータに関する評価を行い，\refsec{eval_ipc_comp}でセグメント数に関する評価について説明する．
+本章では，提案手法の評価を行う．\refsec{eval_env}で評価環境について説明し，\refsec{eval_segIQ}で提案手法によるタグ比較回数と性能低下の評価を行う．\refsec{eval_subseg}でサブ・セグメントに関する評価を説明した後，\refsec{eval_threshold}で SWITCH 方式のパラメータに関する評価を行い，\refsec{eval_ipc_comp}でセグメント数に関する評価について説明する．
 
 \section{評価環境}
 \label{sec:eval_env}
@@ -61,7 +61,7 @@
   \item high MLP：LLC MPKI が2 以上のベンチマーク
 \end{itemize}
 
-分類結果を\tab{classification}に示す．また，以降に示す図において，ILP（青色） 及びMLP（赤色）の表記は，そのベンチマークが ILP もしくは MLP が高いことを表す．
+分類結果を\tab{classification}に示す．また，以降に示す図において，ILP（青色） 及びMLP（赤色）の表記は，ILP もしくは MLP が高いベンチマークであることを表す．
 \begin{table}[htb]
   \caption{ベンチマークの分類}
   \footnotesize
@@ -140,7 +140,7 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
 
 提案手法では IQ の容量効率が低下するため，IQ 内の命令数が少なくなり，結果的に発行コンフリクトが生じる確率が低下する．この結果，問題が生じにくくなり僅かに性能が向上する．
 
-性能が向上するベンチマークの他に，ILP や MLP が高いにもかかわらず，AGGRESSIVE においても性能低下の小さいベンチマークがあることも分かる．こういったベンチマークにおいても，発行コンフリクトの緩和による性能向上が発生しているため，容量効率の低下による性能低下と中和されて，結果として性能低下が小さいと考えられる．
+\fig{ipc_16_1}において，性能が向上するベンチマークの他に，ILP や MLP が高いにもかかわらず，AGGRESSIVE においても性能低下の小さいベンチマークがあることも分かる．こういったベンチマークにおいても，発行コンフリクトの緩和による性能向上が発生しているため，容量効率の低下による性能低下と中和されて，結果として性能低下が小さいと考えられる．
 
 \begin{figure}[htb]
   \centering
@@ -152,7 +152,7 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{conservative_sub_seg}
-  \caption{サブ・セグメントと CONSERVATIVE モードの組み合わせ}
+  \caption{サブ・セグメントを使用する CONSERVATIVE モードにおけるタグ比較回数}
   \label{fig:conservative_sub_seg}
 \end{figure}
 
@@ -187,7 +187,7 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
 
 \section{サブ・セグメントに関する評価}
 \label{sec:eval_subseg}
-サブ・セグメントを使用する場合の提案手法に関して評価する．メイン・セグメント数が 8，サブ・セグメント数が 2 の場合（（8，2）と表記する）に関して評価を行った．このセグメントの組み合わせは，（16，1） の場合とセグメントの総数が同じであり，比較の対象として適していると考え選んだものである．また，（8，2）の組み合わせは，\refsec{eval_ipc_comp}で説明するセグメント数の評価において，最適と判断された組み合わせである．
+サブ・セグメントを使用する場合の提案手法に関して評価する．メイン・セグメント数が 8，サブ・セグメント数が 2 の場合（（8，2）と表記する）に関して評価を行った．このセグメントの組み合わせは，（16，1） の場合とセグメントの総数が同じであり，比較の対象として適していると考え選んだものである．また，（8，2）の組み合わせは，\refsec{eval_ipc_comp}で説明するセグメントの分割数に関する評価において，最適と判断された組み合わせである．
 
 
 \subsection{タグ比較回数の削減}
@@ -229,7 +229,7 @@ SWITCH 方式において，ILP と ILP の高低を判定するために使用�
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{switch_IPC_rate}
-  \caption{IPC による SWITCH 方式の制御}
+  \caption{IPC を用いた SWITCH 方式の制御}
   \label{fig:switch_IPC_rate}
 \end{figure}
 
@@ -239,7 +239,7 @@ ILP を評価する値として IPC と ISR の評価を行う．評価の方針
 その後，それぞれの評価値を利用する場合の提案手法によるタグ比較削減と性能低下を比較し，IPC と ISR のどちらがより適した評価指標か評価する．
 
 \subsubsection{IPC による制御}
-ILP の評価指標として，IPC を使用する場合の評価を行った．本評価は，セグメントの数を（16，1）で行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
+ILP の評価指標として，IPC を使用する場合の評価を行った．本評価は，セグメント数を（16，1）として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{switch_IPC_rate}に，IPC のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．この割合が大きいほど，ILP が高いと判断され多くのサイクルが CONSERVATIVE モードで実行されていることを表す．また，各判例の IPC=X は，ILP が高いと判定する IPC のしきい値をX とした場合を示している．また，avg は全ベンチマークの平均を，high ILP avg は ILP の高いベンチマークでの平均を表している． 
 
@@ -250,12 +250,12 @@ ILP が高い場合は CONSERVATIVE モードで実行することが望まし�
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{switch_ISR_rate}
-  \caption{ISR による SWITCH 方式の制御}
+  \caption{ISR を用いた SWITCH 方式の制御}
   \label{fig:switch_ISR_rate}
 \end{figure}
 
 \subsubsection{ISR による制御}
-ILP の評価指標として，ISR を使用する場合の評価を行った．評価は IPC の場合と同様にセグメントの数を（16，1）として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
+ILP の評価指標として，ISR を使用する場合の評価を行った．評価は IPC の場合と同様にセグメント数を（16，1）として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{switch_ISR_rate}に，ISR のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．各判例の ISR=X は，ILP が高いと判定する ISR のしきい値を X とした場合を表す．
 
@@ -287,17 +287,17 @@ exchange2 及び fotonik3d は提案手法によって性能低下を起こさ�
 以上の評価から，ISR による制御は一部の ILP が低いベンチマークを ILP が高いと判定してしまうため，IPC を 用いた制御のほうがより適していると言える．SWITCH 方式における ILP の判定は，IPC を用いることとし，ILP が高いとする IPC のしきい値は 3.5 とする．
 
 \subsection{MLPの評価値}
-MLP を評価する値として LLC MPKI の評価を行う．評価の方針としては，LLC MPKI のしきい値に関して適当な値を求める．適当ななしきい値は，しきい値を変化させた場合に，MLP の高いベンチマークにおいて，CONSERVATIVE モードで実行される割合を評価することによって決定する．
+MLP を評価する値として LLC MPKI の評価を行う．評価の方針としては，LLC MPKI のしきい値に関して適当な値を求める．適当なしきい値は，しきい値を変化させた場合に，MLP の高いベンチマークにおいて，CONSERVATIVE モードで実行される割合を評価することによって決定する．
 
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{switch_MPKI_rate}
-  \caption{MPKI による SWITCH 方式の制御}
+  \caption{LLC MPKI による SWITCH 方式の制御}
   \label{fig:switch_MPKI_rate}
 \end{figure}
 
 \subsubsection{LLC MPKI による制御}
-本評価は，セグメントの数を（16，1）で行った．また，MLP による SWITCH 方式の制御のみ行い，ILP による制御は行っていない．
+本評価は，セグメント数を（16，1）として行った．また，MLP による SWITCH 方式の制御のみ行い，ILP による制御は行っていない．
 
 \fig{switch_MPKI_rate}に，LLC MPKI のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．各判例の MPKI=X は，MLP が高いと判定する LLC MPKI のしきい値を X とした場合を表す．また，avg は全ベンチマークの平均を，high MLP avg は MLP の高いベンチマークでの平均を示している． 
 
@@ -332,7 +332,7 @@ ILP と MLP による制御を同時に行った場合に関して評価を行�
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{segment_num}
-  \caption{セグメント数の違いによるタグ比較回数の削減と性能低下}
+  \caption{セグメント数の違いによるタグ比較回数の削減と性能低下の散布図}
   \label{fig:segment_num}
 \end{figure}
 

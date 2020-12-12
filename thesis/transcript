@@ -11,7 +11,7 @@ A level-1 auxiliary file: src/summary.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran.bst
-Database file #1: ref_swopp.bib
+Database file #1: ref.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -91,19 +91,19 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 12--13
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 26--27
- [][] 
-[12]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 34--35
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 24--25
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 41--42
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 32--33
  [][] 
-[13] [14] [15] [16] [17] [18]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 117--118
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 39--40
+ [][] 
+[12] [13] [14] [15] [16] [17] [18]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 115--116
  [][] 
 [19] [20] [21]
-Overfull \hbox (18.62187pt too wide) in paragraph at lines 157--165
+Overfull \hbox (18.62187pt too wide) in paragraph at lines 155--163
  [][][] 
 ) [22] (./src/switch.tex
 第 5 章
@@ -117,7 +117,7 @@ Overfull \hbox (32.84825pt too wide) in paragraph at lines 84--92
 Overfull \hbox (32.84825pt too wide) in paragraph at lines 115--123
  [][][] 
 [29] [30] [31]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 157--158
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
  [][] 
 [32]) [33] (./src/eval.tex
 第 6 章
@@ -136,13 +136,13 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 154--155
  [][] 
-
+[40]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[40] [41] [42] [43] [44]
+[41] [42] [43] [44]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 231--232
  [][] 
 [45]
@@ -157,16 +157,16 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 275--276
 [47] [48]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 294--295
  [][] 
-[49]
+[49] [50]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 312--313
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 319--320
  [][] 
-[50]
+[51]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 334--335
  [][] 
-[51] [52]) [53] (./src/summary.tex
+[52]) [53] (./src/summary.tex
 第 7 章
 ) [54] (./src/publication.tex) [55] (./src/acknowledgement.tex) [56]
   参考文献
@@ -188,5 +188,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (65 pages, 207084 bytes).
+Output written on main.dvi (65 pages, 206576 bytes).
 Transcript written on main.log.
