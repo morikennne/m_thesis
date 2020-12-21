@@ -74,18 +74,18 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd) [1]) [2]
 (./src/related_work.tex
 第 2 章
-[3] [4]) [5] (./src/basic_IQ.tex
+[3] [4]) [5] [6] (./src/basic_IQ.tex
 第 3 章
-[6]
+[7]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 18--19
  [][] 
-[7]
+[8]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 36--37
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
 [][] 
-[8] [9] [10]) [11] (./src/segment_IQ.tex
+[9] [10] [11]) [12] (./src/segment_IQ.tex
 第 4 章
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 12--13
@@ -99,29 +99,29 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 32--33
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 39--40
  [][] 
-[12] [13] [14] [15] [16] [17] [18]
+[13] [14] [15] [16] [17] [18] [19]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 115--116
  [][] 
-[19] [20] [21]
+[20] [21] [22]
 Overfull \hbox (18.62187pt too wide) in paragraph at lines 155--163
  [][][] 
-) [22] (./src/switch.tex
+) [23] [24] (./src/switch.tex
 第 5 章
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 7--8
  [][] 
-[23] [24] [25] [26] [27]
+[25] [26] [27] [28] [29]
 Overfull \hbox (32.84825pt too wide) in paragraph at lines 84--92
  [][][] 
-[28]
+[30]
 Overfull \hbox (32.84825pt too wide) in paragraph at lines 115--123
  [][][] 
-[29] [30] [31]
+[31] [32] [33]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
  [][] 
-[32]) [33] (./src/eval.tex
+[34]) [35] (./src/eval.tex
 第 6 章
-[34] [35]
+[36] [37]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
  [][] 
 
@@ -130,45 +130,45 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 105--106
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 111--112
  [][] 
-[36] [37] [38] [39]
+[38] [39] [40] [41]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 154--155
  [][] 
-[40]
+[42]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[41] [42] [43] [44]
+[43] [44] [45] [46]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 231--232
  [][] 
-[45]
+[47]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 252--253
  [][] 
-[46]
+[48]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 268--269
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 275--276
  [][] 
-[47] [48]
+[49] [50]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 294--295
  [][] 
-[49] [50]
+[51] [52]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 312--313
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 319--320
  [][] 
-[51]
+[53]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 334--335
  [][] 
-[52]) [53] (./src/summary.tex
+[54]) [55] (./src/summary.tex
 第 7 章
-) [54] (./src/publication.tex) [55] (./src/acknowledgement.tex) [56]
+) [56] (./src/publication.tex) [57] (./src/acknowledgement.tex) [58]
   参考文献
 (./main.bbl
 
@@ -179,7 +179,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[57] [58] [59] [60]) [61] (./main.aux (./src/abstract.aux)
+[59] [60] [61] [62]) [63] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
 (./src/publication.aux) (./src/acknowledgement.aux))
@@ -188,5 +188,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (65 pages, 206576 bytes).
+Output written on main.dvi (67 pages, 209020 bytes).
 Transcript written on main.log.
