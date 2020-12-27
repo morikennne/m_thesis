@@ -126,13 +126,13 @@ Overfull \hbox (7.41238pt too wide) in paragraph at lines 8--9
 []\JY1/mc/m/n/12 評価環境について説明する ． 性能やタグ比較回数を評価するために
  ， \OT1/cmr/m/n/12 Sim-pleScalar v.3.0a [[]]
 [36] [37]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 100--101
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 105--106
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 106--107
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 111--112
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 112--113
  [][] 
 [38] [39] [40] [41]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
@@ -140,13 +140,18 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 154--155
  [][] 
-[42]
+
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[43] [44] [45] [46]
+[42] [43] [44] [45] [46]
+
+LaTeX Warning: Reference `sec:appendix1' on page 47 undefined on input line 227
+.
+
+
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 231--232
  [][] 
 [47]
@@ -159,16 +164,17 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 268--269
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 275--276
  [][] 
 [49] [50]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 294--295
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 295--296
  [][] 
 [51] [52]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 312--313
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 319--320
- [][] 
+LaTeX Warning: Reference `fig:moderate_16_1' on page 53 undefined on input line
+ 318.
+
 [53]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 334--335
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 330--331
  [][] 
 [54]) [55] (./src/summary.tex
 第 7 章
@@ -190,7 +196,10 @@ LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  )
 (see the transcript file for additional information)
-Output written on main.dvi (67 pages, 209512 bytes).
+Output written on main.dvi (67 pages, 209892 bytes).
 Transcript written on main.log.

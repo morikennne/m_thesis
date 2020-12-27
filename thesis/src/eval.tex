@@ -224,11 +224,11 @@ AGGRESSIVE モードでの性能低下率に関して考える．\tab{subseg_eva
 
 \section{SWITCH 方式のしきい値に関する評価}
 \label{sec:eval_threshold}
-SWITCH 方式において，ILP と MLP の高低を判定するために使用するしきい値に関する評価を行う．
+SWITCH 方式において，ILP と MLP の高低を判定するために使用するしきい値に関する評価を行う．しきい値に関する評価は，すべてのセグメント数の組み合わせに対して行い，それぞれ最適なしきい値を決定した．本節では（8，2）の場合に関して説明し，その他のセグメント数の場合に関しては~\refsec{appendix1}にて評価結果を示す．
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[keepaspectratio, scale=.8]{switch_IPC_rate}
+  \includegraphics[keepaspectratio, scale=.8]{8_2_IPC}
   \caption{IPC を用いた SWITCH 方式の制御}
   \label{fig:switch_IPC_rate}
 \end{figure}
@@ -239,7 +239,7 @@ ILP を評価する値として IPC と ISR の評価を行う．評価の方針
 その後，それぞれの評価値を利用する場合の提案手法によるタグ比較削減と性能低下を比較し，IPC と ISR のどちらがより適した評価指標か評価する．
 
 \subsubsection{IPC による制御}
-ILP の評価指標として，IPC を使用する場合の評価を行った．本評価は，セグメント数を（16，1）として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
+ILP の評価指標として，IPC を使用する場合の評価を行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{switch_IPC_rate}に，IPC のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．この割合が大きいほど，ILP が高いと判断され多くのサイクルが CONSERVATIVE モードで実行されていることを表す．また，各凡例の IPC=X は，ILP が高いと判定する IPC のしきい値をX とした場合を示している．また，avg は全ベンチマークの平均を，high ILP avg は ILP の高いベンチマークでの平均を表している． 
 
@@ -249,13 +249,13 @@ ILP が高い場合は CONSERVATIVE モードで実行することが望まし�
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[keepaspectratio, scale=.8]{switch_ISR_rate}
+  \includegraphics[keepaspectratio, scale=.8]{8_2_ISR}
   \caption{ISR を用いた SWITCH 方式の制御}
   \label{fig:switch_ISR_rate}
 \end{figure}
 
 \subsubsection{ISR による制御}
-ILP の評価指標として，ISR を使用する場合の評価を行った．評価は IPC の場合と同様にセグメント数を（16，1）として行った．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
+ILP の評価指標として，ISR を使用する場合の評価を行った． IPC の評価と同様に，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{switch_ISR_rate}に，ISR のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．各凡例の ISR=X は，ILP が高いと判定する ISR のしきい値を X とした場合を表す．
 
@@ -284,22 +284,22 @@ ILP が高い場合は CONSERVATIVE モードで実行することが望まし�
 
 exchange2 及び fotonik3d は提案手法によって性能低下を起こさないベンチマークであるため，ILP が高いと判定されて CONSERVATIVE モードで実行されることは望ましくない．従って，これらのベンチマークを ILP が低いと判定できる IPC による制御のほうが適していると考えられる．
 
-以上の評価から，ISR による制御は一部の ILP が低いベンチマークを ILP が高いと判定してしまうため，IPC を 用いた制御のほうがより適していると言える．SWITCH 方式における ILP の判定は，IPC を用いることとし，ILP が高いとする IPC のしきい値は 3.5 とする．
+
+以上の評価から，ISR による制御は一部の ILP が低いベンチマークを ILP が高いと判定してしまうため，IPC を 用いた制御のほうがより適していると言える．また，この性質はセグメント数が異なる場合でも同様であった．したがって，SWITCH 方式における ILP の判定は，すべてのセグメント数の組み合わせでIPC を用いることとする．
 
 \subsection{MLPの評価値}
 MLP を評価する値として LLC MPKI の評価を行う．評価の方針としては，LLC MPKI のしきい値に関して適当な値を求める．適当なしきい値は，しきい値を変化させた場合に，MLP の高いベンチマークにおいて，CONSERVATIVE モードで実行される割合を評価することによって決定する．
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[keepaspectratio, scale=.8]{switch_MPKI_rate}
+  \includegraphics[keepaspectratio, scale=.8]{8_2_MPKI}
   \caption{LLC MPKI による SWITCH 方式の制御}
   \label{fig:switch_MPKI_rate}
 \end{figure}
 
 \subsubsection{LLC MPKI による制御}
-本評価は，セグメント数を（16，1）として行った．また，MLP による SWITCH 方式の制御のみ行い，ILP による制御は行っていない．
+\fig{switch_MPKI_rate}に，LLC MPKI のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．各凡例の MPKI=X は，MLP が高いと判定する LLC MPKI のしきい値を X とした場合を表す．また，avg は全ベンチマークの平均を，high MLP avg は MLP の高いベンチマークでの平均を示している．なお，MLP による SWITCH 方式の制御のみ行い，ILP による制御は行っていない．
 
-\fig{switch_MPKI_rate}に，LLC MPKI のしきい値を変化させた場合の，CONSERVATIVE モードで実行される割合を示す．各凡例の MPKI=X は，MLP が高いと判定する LLC MPKI のしきい値を X とした場合を表す．また，avg は全ベンチマークの平均を，high MLP avg は MLP の高いベンチマークでの平均を示している． 
 
 同図より，LLC MPKI しきい値が高くなるほど，CONSERVATIVE で実行される割合が小さくなっていることが分かる．これは，LLC MPKI が高いと判定される基準が厳しくなるためである．
 
@@ -309,24 +309,20 @@ MLP が高い場合は CONSERVATIVE モードで実行することが望まし�
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[keepaspectratio, scale=.8]{moderate_16_1}
-  \caption{SWITCH 方式におけるモードの割合（16，1）}
-  \label{fig:moderate_16_1}
-\end{figure}
-
-\begin{figure}[htb]
-  \centering
   \includegraphics[keepaspectratio, scale=.8]{moderate_8_2}
   \caption{SWITCH 方式におけるモードの割合（8，2）}
   \label{fig:moderate_8_2}
 \end{figure}
 
 \subsection{IPC と LLC MPKI を用いた制御に関する評価}
-ILP と MLP による制御を同時に行った場合に関して評価を行う．SWITCH 方式において，上記で決定したしきい値を用いて制御を行った際の，AGGRESSIVE モードと CONSERVATIVE モードで実行される割合を\fig{moderate_16_1}に示す．セグメント数は（16，1）である．
+ILP と MLP による制御を同時に行った場合に関して評価を行う．SWITCH 方式において，上記で決定したしきい値を用いて制御を行った際の，AGGRESSIVE モードと CONSERVATIVE モードで実行される割合を\fig{moderate_16_1}に示す．
 
 同図より，ILP 及び MLP の高いベンチマークは CONSERVATIVE モードの割合が多く，その他のベンチマークにおいては AGGRESSIVE モードの割合が高いことがわかる．したがって，容量効率の重要性に応じて適切なモードを選択できていると言える．
 
-セグメント数が異なる場合でも同様の制御が行えるか確かめるため，（8，2）においても同様の測定を行った．結果を\fig{moderate_8_2}に示す．当図より （8，2） の場合においても，ILP または MLP が高いベンチマークは CONSERVATIVE モードの割合が高く，そうでないベンチマークでは AGGRESSIVE モードの割合が高いことがわかる．したがって，（16，1）で決定した IPC や LLC MPKI のしきい値は，異なるセグメント数であっても有効であるといえる．
+\subsection{IPC 及び LLC MPKI のしきい値に対する提案手法の敏感性の評価}
+しきい値を多少変化させても，性能低下やタグ比較回数が大きく変化しないことが望ましい．そこで，IPC と LLC MPKI のしきい値を変化させた場合の，性能低下とタグ比較回数に関して評価を行う．
+
+\subsubsection{IPC のしきい値を変化させた場合の評価}
 
 
 \begin{figure}[htb]
