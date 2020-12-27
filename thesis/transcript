@@ -8,6 +8,7 @@ A level-1 auxiliary file: src/segment_IQ.aux
 A level-1 auxiliary file: src/switch.aux
 A level-1 auxiliary file: src/eval.aux
 A level-1 auxiliary file: src/summary.aux
+A level-1 auxiliary file: src/appendix1.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran.bst
@@ -63,7 +64,8 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (./main.aux
 (./src/abstract.aux) (./src/introduction.aux) (./src/related_work.aux)
 (./src/basic_IQ.aux) (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux)
-(./src/summary.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+(./src/summary.aux) (./src/appendix1.aux) (./src/publication.aux)
+(./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./main.out) (./main.out)
@@ -93,39 +95,39 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 12--13
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 24--25
  [][] 
-
+[13]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 32--33
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 39--40
  [][] 
-[13] [14] [15] [16] [17] [18] [19]
+[14] [15] [16] [17] [18] [19]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 115--116
  [][] 
 [20] [21] [22]
 Overfull \hbox (18.62187pt too wide) in paragraph at lines 155--163
  [][][] 
-) [23] [24] (./src/switch.tex
+[23] [24]) [25] (./src/switch.tex
 第 5 章
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 7--8
  [][] 
-[25] [26] [27] [28] [29]
+[26] [27] [28] [29] [30]
 Overfull \hbox (32.84825pt too wide) in paragraph at lines 84--92
  [][][] 
-[30]
+[31]
 Overfull \hbox (32.84825pt too wide) in paragraph at lines 115--123
  [][][] 
-[31] [32] [33]
+[32] [33] [34]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
  [][] 
-[34]) [35] (./src/eval.tex
+[35]) [36] (./src/eval.tex
 第 6 章
 
 Overfull \hbox (7.41238pt too wide) in paragraph at lines 8--9
 []\JY1/mc/m/n/12 評価環境について説明する ． 性能やタグ比較回数を評価するために
  ， \OT1/cmr/m/n/12 Sim-pleScalar v.3.0a [[]]
-[36] [37]
+[37] [38]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 100--101
  [][] 
 
@@ -134,7 +136,7 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 106--107
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 112--113
  [][] 
-[38] [39] [40] [41]
+[39] [40] [41] [42]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
  [][] 
 
@@ -146,39 +148,99 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
  [][] 
-[42] [43] [44] [45] [46]
-
-LaTeX Warning: Reference `sec:appendix1' on page 47 undefined on input line 227
-.
-
-
+[43] [44] [45] [46] [47]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 231--232
  [][] 
-[47]
+[48] [49]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 252--253
  [][] 
-[48]
+[50]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 268--269
  [][] 
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 275--276
  [][] 
-[49] [50]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 295--296
- [][] 
-[51] [52]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 312--313
+[51]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 292--293
  [][] 
 
-LaTeX Warning: Reference `fig:moderate_16_1' on page 53 undefined on input line
- 318.
-
-[53]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 330--331
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 299--300
  [][] 
-[54]) [55] (./src/summary.tex
+[52] [53]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 316--317
+ [][] 
+[54]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 333--334
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 340--341
+ [][] 
+[55]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 352--353
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 364--365
+ [][] 
+[56] [57]) [58] [59] (./src/summary.tex
 第 7 章
-) [56] (./src/publication.tex) [57] (./src/acknowledgement.tex) [58]
+) [60] (./src/appendix1.tex
+付 録 A  
+[61]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 47--48
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 55--56
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 60--61
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 68--69
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 73--74
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 81--82
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 86--87
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 94--95
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 107--108
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 112--113
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 120--121
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 125--126
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 133--134
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 138--139
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 146--147
+ [][] 
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 151--152
+ [][] 
+) [62] [63] [64] [65] [66] [67] [68] [69] [70] [71] (./src/publication.tex)
+[72] (./src/acknowledgement.tex) [73]
   参考文献
 (./main.bbl
 
@@ -189,17 +251,14 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[59] [60] [61] [62]) [63] (./main.aux (./src/abstract.aux)
+[74] [75] [76] [77]) [78] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
-(./src/publication.aux) (./src/acknowledgement.aux))
+(./src/appendix1.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  )
 (see the transcript file for additional information)
-Output written on main.dvi (67 pages, 209892 bytes).
+Output written on main.dvi (82 pages, 236412 bytes).
 Transcript written on main.log.
