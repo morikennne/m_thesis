@@ -9,15 +9,18 @@ A level-1 auxiliary file: src/switch.aux
 A level-1 auxiliary file: src/eval.aux
 A level-1 auxiliary file: src/summary.aux
 A level-1 auxiliary file: src/appendix1.aux
+A level-1 auxiliary file: src/appendix2.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
-The style file: IEEEtran.bst
+The style file: IEEEtran_tmp.bst
 Database file #1: ref.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty year in Motomura1990paper
 
 Done.
+(There was 1 warning)
 This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex)
  \write18 enabled.
 entering extended mode
@@ -64,8 +67,8 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (./main.aux
 (./src/abstract.aux) (./src/introduction.aux) (./src/related_work.aux)
 (./src/basic_IQ.aux) (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux)
-(./src/summary.aux) (./src/appendix1.aux) (./src/publication.aux)
-(./src/acknowledgement.aux))
+(./src/summary.aux) (./src/appendix1.aux) (./src/appendix2.aux)
+(./src/publication.aux) (./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./main.out) (./main.out)
@@ -127,65 +130,65 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
 Overfull \hbox (7.41238pt too wide) in paragraph at lines 8--9
 []\JY1/mc/m/n/12 評価環境について説明する ． 性能やタグ比較回数を評価するために
  ， \OT1/cmr/m/n/12 Sim-pleScalar v.3.0a [[]]
-[37] [38]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 100--101
+[37] [38] [39]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 113--114
+ [][] 
+[40] [41]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 135--136
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 106--107
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 142--143
+ [][] 
+[42] [43] [44] [45] [46]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 204--205
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 112--113
- [][] 
-[39] [40] [41] [42]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 147--148
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 211--212
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 154--155
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 218--219
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 161--162
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 225--226
+ [][] 
+[47] [48] [49] [50]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 262--263
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 167--168
- [][] 
-[43] [44] [45] [46] [47]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 231--232
- [][] 
-[48] [49]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 252--253
- [][] 
-[50]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 268--269
- [][] 
-
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 275--276
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 269--270
  [][] 
 [51]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 292--293
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 286--287
+ [][] 
+[52]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 293--294
+ [][] 
+[53]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 307--308
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 299--300
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 314--315
  [][] 
-[52] [53]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 316--317
- [][] 
-[54]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 333--334
+[54] [55]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 339--340
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 340--341
- [][] 
-[55]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 352--353
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 346--347
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 364--365
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 353--354
  [][] 
-[56] [57]) [58] [59] (./src/summary.tex
+
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 365--366
+ [][] 
+[56] [57] [58] [59]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 391--392
+ [][] 
+) [60] [61] (./src/summary.tex
 第 7 章
-) [60] (./src/appendix1.tex
+) [62] (./src/appendix1.tex
 付 録 A  
-[61]
+[63]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 42--43
  [][] 
 
@@ -239,8 +242,12 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 146--147
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 151--152
  [][] 
-) [62] [63] [64] [65] [66] [67] [68] [69] [70] [71] (./src/publication.tex)
-[72] (./src/acknowledgement.tex) [73]
+) [64] [65] [66] [67] [68] [69] [70] [71] [72] [73] (./src/appendix2.tex
+付 録 B  
+[74]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 45--46
+ [][] 
+[75]) [76] (./src/publication.tex) [77] (./src/acknowledgement.tex) [78]
   参考文献
 (./main.bbl
 
@@ -251,14 +258,15 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[74] [75] [76] [77]) [78] (./main.aux (./src/abstract.aux)
+[79] [80] [81] [82]) [83] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
-(./src/appendix1.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+(./src/appendix1.aux) (./src/appendix2.aux) (./src/publication.aux)
+(./src/acknowledgement.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (82 pages, 236412 bytes).
+Output written on main.dvi (87 pages, 245772 bytes).
 Transcript written on main.log.
