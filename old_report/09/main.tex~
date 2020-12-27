@@ -1,0 +1,94 @@
+
+% ページフォーマットの指定
+\documentclass[twocolumn]{jsarticle}
+
+  % 外部パッケージの導入
+  % 引用
+  \usepackage{cite}
+  % 画像の出力
+  \usepackage[dvipdfmx]{graphicx}
+  
+  % 画像元のパスの追加
+  \graphicspath{{figure/}}
+  
+  % 文書本体の記述
+  \begin{document}
+  \title{プログレスレポート}
+  \date{2018年?月?日}
+  \author{森健一郎\\配布対象：安藤先生，松尾}
+  
+  \maketitle
+  
+  \section{研究目的}
+  現在のスーパスカラ・プロセッサでは，分岐予測によって命令を投機的に実行し，高い性能を得ている．
+  しかし，予測が誤った場合には，投機的に実行された命令は無駄になってしまうため，電力を余計に消費する．
+  この投機的に実行された命令を減らすことができれば，消費電力を削減することができる．
+  
+  無駄な投機的実行を抑制する手法として，命令フェッチ・スロットリング~\cite{Manne:1998,Aragon:2003}がある．
+  これは，分岐予測の信頼性を推定し，信頼性が低い場合には，命令のフェッチを停止またはフェッチ速度を低下させて，無駄な投機的実行を抑制する手法である．
+  
+  命令フェッチ・スロットリングによって，性能を維持しつつ，無駄な投機的実行を抑制するためには，より精度の高い分岐予測信頼性推定が必要となる．
+  本研究では，より精度の高い分岐予測信頼性推定を行う方法として，データアクセスの局所性と分岐予測信頼性の間の相関を利用する方法を検討する．
+  具体的には，分岐予測ミス率を増加させる原因を「毒」とみなし，毒ごとに信頼性推定器を設置する．
+  そして，これらの推定器におけるパラメータを毒ごとに最適化する．
+  本研究では，この毒として，キャッシュ・ミスやL1DキャッシュのMRU以外のアクセスを想定する．
+  
+  また，本研究におけるさらなる課題として，フロント・エンドでの毒の発生の予測，命令フェッチ・スロットリングのバリエーションの検討，発行キューの方式への対応などが挙げられる．
+  これらの課題についても十分に検討した上で，提案手法による電力削減および性能低下について評価を行う．
+  
+  \section{経過}
+
+  \subsection{前回の経過}
+
+  \subsection{今回の経過}
+    
+  \section{活動報告}
+
+
+  \begin{table}[htb]
+    \caption{プロセッサの基本構成}
+    \footnotesize
+    \center
+      \begin{tabular}{l|l} \hline \hline
+       Pipeline width & 16 instructions wide for fetch, \\
+       & 8 instructions wide for each of \\
+       & decode, issue, and commit \\
+       Reorder buffer & 224 entries \\
+       IQ & 97 entries \\
+       Load/Store queue & 97 entries \\
+       Pysical registers & 224(int) + 224(fp) + 224(ctl) \\
+       Branch prediction & 12-bit history 4K-entry PHT gshare \\
+       & 2K-set 4-way BTB \\
+       & 10-cycle misprediction penalty \\
+       Function unit & 4 iALU, 2 iMULT, \\
+       &  2 fpALU, 2 fpMULT \\
+       L1 D-cache & 32KB, 8-way, 64B line \\
+        & 2-cycle hit latency \\
+       L1 I-cache & 32KB, 8-way, 64B line \\
+        &  2-cycle hit latency \\
+       L2 cache & 2MB, 16-way, 64B line \\
+        & 12-cycle hit latency \\  
+       Main memory & 300-cycle latency \\
+       & 16B/cycle bandwidth \\ 
+       Prefetch & stream-based,32-stream tracked,  \\ 
+       & 16-line distance, 2-line degree, \\
+       & prefetch to L2 cache \\ \hline
+    \end{tabular}
+    \label{tab:base_config}
+  \end{table}
+
+  \section{研究計画}
+  
+  \begin{itemize}
+  
+  \end{itemize}
+  
+  \section{関連文献}
+  
+  
+  % 参考文献
+  \bibliographystyle{../Config/IEEEtran} 
+  \bibliography{../Config/ref}
+  
+  \end{document}
+  
