@@ -121,6 +121,10 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 155--156
  [][] 
 [34]) [35] (./src/eval.tex
 第 6 章
+
+Overfull \hbox (7.41238pt too wide) in paragraph at lines 8--9
+[]\JY1/mc/m/n/12 評価環境について説明する ． 性能やタグ比較回数を評価するために
+ ， \OT1/cmr/m/n/12 Sim-pleScalar v.3.0a [[]]
 [36] [37]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 99--100
  [][] 
@@ -188,5 +192,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (67 pages, 209020 bytes).
+Output written on main.dvi (67 pages, 209512 bytes).
 Transcript written on main.log.
