@@ -19,28 +19,6 @@
 
 本手法においても，\fig{segmentedIQ}に示すように IQ を複数のセグメントに分割する．各セグメントには，第 1 ソース・タグの下位ビットがセグメントの番号と一致する命令をディスパッチする．ウェイクアップ時の第 1 ソース・タグのタグ比較では，デスティネーション・タグの下位ビットとセグメントの番号が一致するセグメントのみでタグ比較を行う．これによって，第 1 ソース・タグのタグ比較回数を「1/セグメント数」に削減できる．
 
-\begin{figure}[tb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{dispatch}
-  \caption{提案手法におけるディスパッチエントリの決定回路}
-  \label{fig:dispatch}
-\end{figure}
-
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{segmentedIQ_wakeup}
-  \caption{提案手法におけるタグ比較回路（第 0 セグメント）}
-  \label{fig:segmentedIQ_wakeup}
-\end{figure}
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{SVSD}
-  \caption{SVSD（Segment-Validation Signal Decoder）}
-  \label{fig:SVSD}
-\end{figure}
-
 \subsection{提案手法におけるディスパッチ}
 ディスパッチする IQ のエントリを決定する回路を\fig{dispatch}に示す．本手法では，フリー・リストをセグメントと同じ数だけ用意する．各フリー・リストは，対応するセグメントの空きエントリのインデクスを FIFO バッファで管理する．各フリー・リストからは IQ のインデクスが出力され，その中の１つを選択してディスパッチするエントリを決定する．どのフリー・リストからの出力を選択するかは，セグメント選択回路（図中の segment select logic）によって決定される．セグメント選択回路は，第 1 ソース・オペランドのタグとレディ・ビットと，各セグメントの空きエントリ数を入力とし，ディスパッチするセグメント番号を出力する．
 
@@ -53,6 +31,12 @@
 
 なお，ソース・オペランドを使用しない命令も存在するが，そのような命令はディスパッチ時にソース・オペランドがレディであるものとして扱う．
 
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{dispatch}
+  \caption{提案手法におけるディスパッチエントリの決定回路}
+  \label{fig:dispatch}
+\end{figure}
 
 \subsection{提案手法におけるウェイクアップ}
 提案手法におけるウェイクアップでは，デスティネーション・タグの下位ビットがセグメント番号と一致するセグメントでのみ，第 1 ソース・タグのタグ比較器を動作させ比較を行う．一致しないセグメントはタグ比較器を動作させない．これは，デスティネーション・タグの下位ビットと番号が一致しないセグメントには，第 1 ソース・タグの下位ビットがデスティネーション・タグの下位ビットと異なる命令しか入っておらず，タグは必ず不一致となるためである．
@@ -78,6 +62,24 @@ SVS が $H$ の場合，つまり，デスティネーション・タグの下�
 SVSD の回路図を\fig{SVSD}に示す．SVSD はデスティネーション・タグの下位ビットのうち $log_2（セグメント数）$ ビットの正転及び反転信号を入力とし，セグメント数分の SVS を出力するバイナリ・デコード回路である．SVSD は セグメント数分の AND ゲートで構成される．
 
 図ではセグメント数が 4 の場合の SVSD を表記しており，デスティネーション・タグの下位 2 ビット（$log_2\:4$）を入力とし，SVS が 4 本出力される．赤字でタグの下位ビットが 2（${\rm 01_2}$）の場合を例示している．この場合，SVS2 のみ $H$ となり，その他の SVS は $L$ を出力する． 
+
+
+\begin{figure}[thb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{segmentedIQ_wakeup}
+  \caption{提案手法におけるタグ比較回路（第 0 セグメント）}
+  \label{fig:segmentedIQ_wakeup}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{SVSD}
+  \caption{SVSD（Segment-Validation Signal Decoder）}
+  \label{fig:SVSD}
+\end{figure}
+
+% 図が後ろに行きすぎないように
+\clearpage
 
 %4 第 2 ソース・タグ比較の削減
 \section{第 2 ソース・タグ比較の削減}
@@ -110,13 +112,6 @@ SVSD の回路図を\fig{SVSD}に示す．SVSD はデスティネーション・
 \end{table}
 なお，両ソース・オペランドがレディのとき以外で，選択されたセグメントに空きがない場合は，ディスパッチをストールして当該のセグメントに空きが出るまで待ち合わせる．
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{sub_segment}
-  \caption{サブ・セグメントを実装した IQ}
-  \label{fig:sub_segment}
-\end{figure}
-
 \subsection{サブ・セグメント}
 \label{sec:sub_segment}
 サブ・セグメント方式は，第 1 ソース・タグの下位ビットに応じて分割されるセグメントを，第 2 ソース・タグの下位ビットに応じてさらに細かく分割する．第 2 ソース・タグの下位ビットによる分割をサブ・セグメント（S-seg）と呼び，従来の第 1 ソース・タグによる分割をサブ・セグメントに対応してメイン・セグメント（M-seg）と呼ぶこととする．
@@ -124,6 +119,13 @@ SVSD の回路図を\fig{SVSD}に示す．SVSD はデスティネーション・
 サブ・セグメントを導入した IQ の分割を\fig{sub_segment}に示す．黒色の枠で示す各メイン・セグメントを，赤色と青色で示すようにさらにサブ・セグメントに分割する．同図は，メイン・セグメント数が 4 ，サブ・セグメント数が 2 の場合の例を表しており， IQ は合計 $4 \times 2 = 8$ 個のセグメントに分割される．各セグメントの左には，（M-seg，S-seg）という形式でメイン及びサブ・セグメントの番号を表している．
 
 サブ・セグメント方式について，ディスパッチとウェイクアップの動作をそれぞれ説明する．
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{sub_segment}
+  \caption{サブ・セグメントを実装した IQ}
+  \label{fig:sub_segment}
+\end{figure}
 
 \subsubsection{サブ・セグメントにおけるディスパッチ}
 サブ・セグメント方式におけるディスパッチにおいては，フリー・リストを M-seg $\times$ S-seg だけ用意する．\fig{sub_segment}に示した例の場合 8 個のフリー・リストが必要となる．
@@ -176,7 +178,7 @@ SVSD の回路図を\fig{SVSD}に示す．SVSD はデスティネーション・
 \[
   \frac{3}{4}\times\frac{1}{M\_seg} + \frac{1}{4}\times\frac{1}{S\_seg}
 \]
-ここで，$M\_seg$ はメイン・セグメント数を， $S\_seg$ はサブ・セグメント数を表す．なお，サブ・セグメントを使用しない場合は，セグメント数を $M\_seg$ とし，$S\_seg = 1 $ として計算すれば良い．
+ここで，$M\_seg$ はメイン・セグメント数を， $S\_seg$ はサブ・セグメント数を表す．なお，サブ・セグメントを使用しない場合は，$M\_seg$ をセグメント数とし，$S\_seg = 1 $ として計算すれば良い．
 
 % \fig{comp_estimate}を用いて説明する．同図の左側は，（16，1）の場合における，ディスパッチ時のソース・タグの状態ごとのタグ比較回数を表したものである．灰色のエントリは既にレディなソース・オペランドであり，比較が行われないことを表し，白色のエントリは比較が行われることを表す．（R，R）の場合どちらのタグも比較は行われず，（NR，R）と（R，NR）の場合はレディでない方のタグで比較が行われる．そして（NR，NR）の場合はどちらのタグも比較が行われる．
 

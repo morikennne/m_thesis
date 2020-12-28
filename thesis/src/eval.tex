@@ -7,7 +7,7 @@
 \label{sec:eval_env}
 評価環境について説明する．性能やタグ比較回数を評価するために，SimpleScalar v.3.0a~\cite{SimpleScalar} をベースに作成したシュミレータを使用した．評価で仮定したプロセッサ構成を\tab{base_config}に示す．
 
-提案手法の SWITCH 方式に関するパラメータを，\tab{switch_config}に示す．これらのパラメータは，\refsec{eval_threshold} で説明する評価に基づいて決定した最適なパラメータである．
+提案手法の に関するパラメータを，\tab{switch_config}と\tab{switch_config_subseg}に示す．\tab{switch_config} はサブ・セグメントを使用しない場合に最適なパラメータを，\tab{switch_config_subseg}はサブ・セグメントを使用する場合に最適なパラメータを示している．これらのパラメータは，\refsec{eval_threshold}及び\refsec{eval_ipc_comp}で説明する評価に基づいて決定した最適なパラメータである．
 
 測定ベンチマークには，SPEC CPU 2017 ベンチマークのうち，int 系 9 本と fp 系 9 本の計 18 本を使用した（gcc と wrf は，現在のところ，シミュレータでは正しく動作しなかったため，除いている）．プログラムの入力には refspeed データ・セットを用いた．ベンチマークの測定区間は，プログラムの先頭から 16B 命令をスキップした後の 100M 命令である．
 
@@ -43,15 +43,30 @@
 \end{table}
 
 \begin{table}[tb]
-  \caption{提案手法の SWITCH 方式に関するパラメータ構成}
+  \caption{提案手法に関するパラメータ構成（サブ・セグメント不使用）}
   \footnotesize
   \center
     \begin{tabular}{l|l} \hline \hline
+    セグメント数 & 16 \\
     切り替えインターバル & 10K instructions \\
     IPC しきい値 & 3.5 \\
     LLC MPKI しきい値 & 2.0 \\ \hline 
   \end{tabular}
   \label{tab:switch_config}
+\end{table}
+
+\begin{table}[tb]
+  \caption{提案手法に関するパラメータ構成（サブ・セグメント使用）}
+  \footnotesize
+  \center
+    \begin{tabular}{l|l} \hline \hline
+    メイン・セグメント数 & 8 \\
+    サブ・セグメント数 & 2 \\
+    切り替えインターバル & 10K instructions \\
+    IPC しきい値 & 3.5 \\
+    LLC MPKI しきい値 & 2.0 \\ \hline 
+  \end{tabular}
+  \label{tab:switch_config_subseg}
 \end{table}
 
 \subsubsection{ベンチマークの分類}
@@ -102,7 +117,7 @@
 \subsection{タグ比較回数の削減}
 \fig{comp_16_1}に，提案手法の BASE モデルに対するタグ比較回数の割合をベンチマークごとに示す．GM は全ベンチマークでの幾何平均を表す．AGGRESSIVE と CONSERVATIVE のタグ比較回数削減に関しては，同図より，いずれのベンチマークにおいても，AGGRESSIVE の方がタグ比較回数が少ないことがわかる．その差は 平均で 20\% ポイント程度となっており，AGGRESSIVE モードのタグ比較回数を積極的に削減できるという性質が確認できる．
 
-また，AGGRESSIVE モードでのタグ比較回数は，\tab{comp_estimate}で示したタグ比較の概算値よりも 10\% ポイント程度少なくなっている．これは，IQ の容量効率の低下が原因と考えられる．IQ の容量効率が低下するということは，IQ 内の命令数が少なくなることを意味する．これによって，比較を行うソース・タグの数自体が減少するため，概算値以上にタグ比較回数が削減される．
+また，AGGRESSIVE モードでのタグ比較回数は，\tab{comp_estimate}で示したタグ比較回数の概算値よりも 10\% ポイント程度少なくなっている．これは，IQ の容量効率の低下が原因と考えられる．IQ の容量効率が低下するということは，IQ 内の命令数が少なくなることを意味する．これによって，比較を行うソース・タグの数自体が減少するため，結果として概算値以上にタグ比較回数が削減される．
 
 同図より SWITCH 方式では，平均で BASE モデルの 25\% 程度のタグ比較回数となっており，75\% の削減を達成している．
 
@@ -189,7 +204,7 @@ AGGRESSIVE モードでの性能低下率に関して考える．\tab{subseg_eva
 
 以上の考察から，セグメントの総数が同じである場合，サブ・セグメントを使用することによって，AGGRESSIVE モードでの容量効率の低下による性能低下を抑制できることがわかった．
 
-最後に，SWITCH 方式の有効性に関して説明する．（8，2）の場合，サブ・セグメントが有効であり，AGGRESSIVE での大幅な性能低下が見られないため，（16，1）の場合と比較して SWITCH 方式の有効性は平均では高くない．しかし，imagick や lbm などのベンチマークにおいては AGGRESSIVE モードで発生する性能低下を抑制できている．また，CONSERVATIVE モードでのタグ比較削減率が高く，その結果 SWITCH 方式自体のタグ比較削減率も高くなっている．
+最後に，SWITCH 方式の有効性に関して説明する．（8，2）の場合，サブ・セグメントが有効であり，AGGRESSIVE モードでの大幅な性能低下が見られないため，（16，1）の場合と比較して SWITCH 方式の有効性は平均では高くない．しかし，imagick や lbm などのベンチマークにおいては AGGRESSIVE モードで発生する性能低下を抑制できている．また，CONSERVATIVE モードでのタグ比較削減率が高く，その結果 SWITCH 方式自体のタグ比較削減率も高くなっている．
 
 \subsubsection{サブ・セグメントの評価のまとめ}
 サブ・セグメントを使用すると，以下のメリットがあることがわかった．
@@ -295,7 +310,7 @@ exchange2 及び fotonik3d は提案手法によって性能低下を起こさ�
   \label{fig:switch_ILP_comp}
 \end{figure}
 
-\subsubsection{IPC のしきい値の敏感性}
+\subsubsection{IPC のしきい値の敏感性に関する評価}
 IPC のしきい値を最適と判断された 3.5 付近で変化させた場合の提案手法による性能低下とタグ比較回数に関して評価する．セグメント数は（8，2）である．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{IPC_sensitivity_performance}に性能低下を，\fig{IPC_sensitivity_comp}にタグ比較回数を示す．同図より，多くのベンチマークではしきい値が変化しても性能低下率やタグ比較回数は大きく変化しないことがわかる．したがって，SWITCH 方式は基本的に IPC のしきい値に対して鈍感であり，今回測定したベンチマーク以外のプログラムにおいても有効性は高いと考えられる．
@@ -315,6 +330,9 @@ IPC のしきい値を最適と判断された 3.5 付近で変化させた場�
   \caption{IPC のしきい値を変化させた場合の SWITCH 方式によるタグ比較回数}
   \label{fig:IPC_sensitivity_comp}
 \end{figure}
+
+% 図が後ろに行きすぎないように
+\clearpage
 
 \subsection{MLPの評価値}
 MLP を評価する値として LLC MPKI の評価を行う．評価の方針としては，LLC MPKI のしきい値に関して適当な値を求める．適当なしきい値は，しきい値を変化させた場合に，MLP の高いベンチマークにおいて，CONSERVATIVE モードで実行される割合を評価することによって決定する．
