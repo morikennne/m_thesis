@@ -150,14 +150,14 @@ ISR は，「インターバルの全サイクルのうち 1 命令も発行さ�
 \subsubsection{LLC MPKI}
 LLC MPKI は LLC のキャッシュ・ミスの発生頻度を表す指標である．あらかじめ LLC MPKI にしきい値を設け，定期的に LLC MPKI を観測し，インターバルでのLLC MPKI がしきい値を上回った場合に MLP が高いと判断し，そうでなければ低いと判断する．
 
+\subsubsection{切り替えアルゴリズム}
+切り替えアルゴリズムは以下に示すとおりである．定期的に評価指標である IPC（もしくはISR）と LLC MPKI を測定し，ILP および MLP の高低を判断する．ILP または MLP のいずれかが高いと判定された場合，次のインターバルを CONSERVATIVE モードで実行する．ILP と MLP がどちらも低いと判定された場合，次のインターバルを AGGRESSIVE モードで実行する．
+
+SWITCH 方式におけるディスパッチするエントリの決定回路を\fig{switch}に示す．AGGRESSIVE と CONSERVATIVE の 2 つの選択アルゴリズムのうち，どちらを利用するかを SWITCH 回路が選択し，その結果に応じてセグメントが選択される．
+
 \begin{figure}[htb]
   \centering
   \includegraphics[keepaspectratio, scale=.8]{switch}
   \caption{SWITCH 方式におけるディスパッチエントリの決定回路}
   \label{fig:switch}
 \end{figure}
-
-\subsubsection{切り替えアルゴリズム}
-切り替えアルゴリズムは以下に示すとおりである．定期的に評価指標である IPC（もしくはISR）と LLC MPKI を測定し，ILP および MLP の高低を判断する．ILP または MLP のいずれかが高いと判定された場合，次のインターバルを CONSERVATIVE モードで実行する．ILP と MLP がどちらも低いと判定された場合，次のインターバルを AGGRESSIVE モードで実行する．
-
-SWITCH 方式におけるディスパッチするエントリの決定回路を\fig{switch}に示す．AGGRESSIVE と CONSERVATIVE の 2 つの選択アルゴリズムのうち，どちらを利用するかを SWITCH 回路が選択し，その結果に応じてセグメントが選択される．
