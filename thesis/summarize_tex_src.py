@@ -2,7 +2,7 @@
 
 import sys
 
-# ここでソースファイル名を指定
+# ここでソースファイル名を指定（main.tex は書かない）
 input_file_list =   ["abstract", 
                     "introduction",
                     "related_work",
@@ -11,6 +11,9 @@ input_file_list =   ["abstract",
                     "switch",
                     "eval",
                     "summary",
+                    "appendix1",
+                    "appendix2",
+                    "appendix3",
                     "publication",
                     "acknowledgement"
                   ]

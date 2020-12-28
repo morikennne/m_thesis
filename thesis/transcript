@@ -140,50 +140,50 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 150--151
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 157--158
  [][] 
-[44] [45] [46] [47] [48]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 221--222
+[44] [45] [46]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 202--203
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 228--229
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 209--210
+ [][] 
+[47] [48] [49]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 238--239
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 235--236
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 245--246
+ [][] 
+[50] [51] [52]
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 282--283
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 242--243
- [][] 
-[49] [50] [51] [52]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 279--280
- [][] 
-
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 286--287
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 289--290
  [][] 
 [53] [54]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 303--304
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 306--307
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 310--311
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 313--314
  [][] 
 [55]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 324--325
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 327--328
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 331--332
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 334--335
  [][] 
 [56] [57] [58] [59]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 359--360
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 362--363
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 366--367
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 369--370
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 373--374
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 376--377
  [][] 
 
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 385--386
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 388--389
  [][] 
 [60] [61] [62]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 411--412
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 414--415
  [][] 
 ) [63] [64] (./src/summary.tex
 第 7 章
@@ -271,5 +271,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (92 pages, 254932 bytes).
+Output written on main.dvi (92 pages, 254952 bytes).
 Transcript written on main.log.

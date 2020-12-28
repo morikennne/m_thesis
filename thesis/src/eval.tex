@@ -115,7 +115,7 @@
 提案手法によるタグ比較回数の削減と性能低下に関して評価を行う．サブ・セグメントを使用せず，セグメント数は 16 とした（（16，1）と表記）．このセグメント数は，提案手法による性能低下とタグ比較回数のバランスを考慮し，提案手法の特徴をよく評価できるパラメータであると考え選んだものである．
 
 \subsection{タグ比較回数の削減}
-\fig{comp_16_1}に，提案手法の BASE モデルに対するタグ比較回数の割合をベンチマークごとに示す．GM は全ベンチマークでの幾何平均を表す．AGGRESSIVE と CONSERVATIVE のタグ比較回数削減に関しては，同図より，いずれのベンチマークにおいても，AGGRESSIVE の方がタグ比較回数が少ないことがわかる．その差は 平均で 20\% ポイント程度となっており，AGGRESSIVE モードのタグ比較回数を積極的に削減できるという性質が確認できる．
+\fig{comp_16_1}に，提案手法の BASE モデルに対するタグ比較回数の割合をベンチマークごとに示す．avg は全ベンチマークでの算術平均を表す．AGGRESSIVE と CONSERVATIVE のタグ比較回数削減に関しては，同図より，いずれのベンチマークにおいても，AGGRESSIVE の方がタグ比較回数が少ないことがわかる．その差は 平均で 20\% ポイント程度となっており，AGGRESSIVE モードのタグ比較回数を積極的に削減できるという性質が確認できる．
 
 また，AGGRESSIVE モードでのタグ比較回数は，\tab{comp_estimate}で示したタグ比較回数の概算値よりも 10\% ポイント程度少なくなっている．これは，IQ の容量効率の低下が原因と考えられる．IQ の容量効率が低下するということは，IQ 内の命令数が少なくなることを意味する．これによって，比較を行うソース・タグの数自体が減少するため，結果として概算値以上にタグ比較回数が削減される．
 
@@ -197,6 +197,23 @@ SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が�
 
 最後に SWITCH 方式に関して評価する．（16，1）の場合と同様に容量効率の重要性に応じてモードの切り替えができており，IQ の容量効率が重要でないベンチマークにおいては AGGRESSIVE モードと同程度の削減率を達成できている．
 
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{comp_8_2}
+  \caption{提案手法によるタグ比較回数（8，2）}
+  \label{fig:comp_8_2}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{conservative_sub_seg}
+  \caption{サブ・セグメントを使用する CONSERVATIVE モードにおけるタグ比較回数}
+  \label{fig:conservative_sub_seg}
+\end{figure}
+
+% 図が後ろに行きすぎないように
+\clearpage
+
 \subsection{性能低下}
 \fig{ipc_8_2}に，BASE に対する提案手法による性能低下をベンチマークごとに示す．同図より，SWITCH 方式による性能低下は最大で 4\% 程度であり，多くのベンチマークでは 0\% に近く性能はほとんど低下しないということが確認できる．
 
@@ -215,20 +232,6 @@ AGGRESSIVE モードでの性能低下率に関して考える．\tab{subseg_eva
   \item AGGRESSIVE モードにおける性能低下が改善される
 \end{itemize}
 したがって，サブ・セグメントは有効な手法であると言える．
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{comp_8_2}
-  \caption{提案手法によるタグ比較回数（8，2）}
-  \label{fig:comp_8_2}
-\end{figure}
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[keepaspectratio, scale=.8]{conservative_sub_seg}
-  \caption{サブ・セグメントを使用する CONSERVATIVE モードにおけるタグ比較回数}
-  \label{fig:conservative_sub_seg}
-\end{figure}
 
 \begin{figure}[htb]
   \centering
