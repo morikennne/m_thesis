@@ -10,6 +10,7 @@ A level-1 auxiliary file: src/eval.aux
 A level-1 auxiliary file: src/summary.aux
 A level-1 auxiliary file: src/appendix1.aux
 A level-1 auxiliary file: src/appendix2.aux
+A level-1 auxiliary file: src/appendix3.aux
 A level-1 auxiliary file: src/publication.aux
 A level-1 auxiliary file: src/acknowledgement.aux
 The style file: IEEEtran_tmp.bst
@@ -68,7 +69,7 @@ For additional information on amsmath, use the `?' option.
 (./src/abstract.aux) (./src/introduction.aux) (./src/related_work.aux)
 (./src/basic_IQ.aux) (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux)
 (./src/summary.aux) (./src/appendix1.aux) (./src/appendix2.aux)
-(./src/publication.aux) (./src/acknowledgement.aux))
+(./src/appendix3.aux) (./src/publication.aux) (./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./main.out) (./main.out)
@@ -188,7 +189,9 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 409--410
 第 7 章
 ) [65] (./src/appendix1.tex
 付 録 A  
-[66]
+[66]) [67] (./src/appendix2.tex
+付 録 B  
+[68]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 44--45
  [][] 
 
@@ -242,12 +245,12 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 148--149
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 153--154
  [][] 
-) [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] (./src/appendix2.tex
-付 録 B  
-[77] [78]
+) [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] (./src/appendix3.tex
+付 録 C  
+[79] [80]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 51--52
  [][] 
-) [79] (./src/publication.tex) [80] (./src/acknowledgement.tex) [81]
+) [81] (./src/publication.tex) [82] (./src/acknowledgement.tex) [83]
   参考文献
 (./main.bbl
 
@@ -258,15 +261,15 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[82] [83] [84] [85]) [86] (./main.aux (./src/abstract.aux)
+[84] [85] [86] [87]) [88] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
-(./src/appendix1.aux) (./src/appendix2.aux) (./src/publication.aux)
-(./src/acknowledgement.aux))
+(./src/appendix1.aux) (./src/appendix2.aux) (./src/appendix3.aux)
+(./src/publication.aux) (./src/acknowledgement.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (90 pages, 248328 bytes).
+Output written on main.dvi (92 pages, 254596 bytes).
 Transcript written on main.log.

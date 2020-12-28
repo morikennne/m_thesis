@@ -1,54 +1,156 @@
 
-\chapter{今後の課題：提案手法の遅延}
+\chapter{SWITCH 方式のしきい値の評価}
 \label{sec:appendix2}
-本研究における未解決の課題である，提案手法におけるウェイクアップ時の遅延に関して説明する．
 
-提案手法にはウェイクアップ論理の遅延が増加するという問題がある．これは，ウェイクアップ論理のクリティカル・パスに SVSD での SVS の生成と，タグの高位ビットと SVS との論理積が加わるためである．一般に，ウェイクアップ論理はプロセッサ全体のクリティカル・パスであるため，ウェイクアップ論理の遅延増加は，クロック・サイクル時間の増加につながり，結果として性能が低下する．したがって，提案手法によるウェイクアップ論理の遅延の増加は許容できる範囲に抑える必要がある．
+\refsec{eval_threshold}で説明したしきい値に関する評価に関して，既に説明した（8，2）以外のセグメント数の組み合わせでの評価結果を示す．評価手順は\refsec{eval_threshold}で説明したものと同様である．なお，ILP の評価値としては ISR と IPC よりも有効であることから，ISR のしきい値の評価に関しては省略し，IPC と LLC MPKI のしきい値の評価のみ説明する．
 
-SVSD での遅延の影響を測定するために，HSPICE による回路シミュレーションにより測定を行った．16nm LSI プロセスを仮定し，トランジスタ・モデルとして，アリゾナ州立大学のPredictiveTechnology Model（PTM）~\cite{model2012}を使用した．International Technology Roadmap for Sem-conductors（ITRS）~\cite{itrs2012}により公開されているデータより，単位長さあたりの配線抵抗は 46.96MΩ/m，配線容量は 0.165nF/m とした．なお，この HSPICE による回路シュミレーションは，松田~\cite{matsuda-thesis}の作成したネットリスト生成プログラム及び遅延測定用スクリプトを修正して使用することにより行った． 
+評価結果を，\fig{4_1_IPC}から\fig{8_4_MPKI}に示す．各図は，IPC 及び  LLC MPKI を変化させた場合の，SWITCH 方式において CONSERVATIVE モードで実行される割合を示している（\fig{switch_IPC_rate}や\fig{switch_MPKI_rate}と同様の形式）．
 
-測定を行った SVSD 回路の回路図を\fig{SVSD_nand_nor}に示す．当図は，セグメント数が 8 で，タグのビット数が 8 ビットの場合を示している．基本的な回路構成は\refsec{segment_IQ}で説明したものと同様であるが，CMOS トランジスタで構成するため，NAND 及び NOR を使用する回路構成に変更している．本回路に関して詳しく説明する．
+これらの評価をもとに，（8，2）の場合と同様に最適なしきい値を求めた．各セグメント数での最適と判断したしきい値を\tab{switch_threshold_all}に示す．
 
-\ctext{1}SVSD は，ディスティネーション・タグの下位 3 ビットの正転及び反転信号を用いて，セグメント数分の SVS の反転信号（$\lnot SVS\;0$ 〜 $\lnot SVS\;7$）を生成する．\ctext{2} SVS の反転信号は，ディスティネーション・タグ（dtag3 〜 dtag7）の反転（正転）信号と否定論理和をとり，SVS によって有効化されたディスティネーション・タグ（v-dtag：validated dtag）の正転（反転）信号を生成する．これは，以下の論理式に基づいている．
-\[
-  v\_dtag = \lnot (\lnot dtag \lor \lnot SVS) \; (= dtag \land SVS) 
-\]
-\[
-  \lnot v\_dtag = \lnot (dtag \lor \lnot SVS) \; (= \lnot dtag \land SVS) 
-\]
-生成された v-dtag は各セグメントに送られ，セグメント内の 全エントリの CAM に入力される．
+LLC MPKI に関しては，全ての組み合わせにおいて 2.0 と同一のしきい値となっている．これは，セグメント数が変化しても，LLC MPKI はほとんど変化しないためである．
 
-松田のネットリスト生成プログラムを修正して，SVS を含む提案手法のウェイクアップ回路の遅延測定を行った．測定結果を\tab{delay}に示す．表の各項目は次の意味を持つ．
-  \begin{itemize}
-    \item from tagRAM：タグRAM から SVS  の入力までの遅延
-    \item SVS：SVS 信号を生成するまでの遅延(\fig{SVSD_nand_nor}における赤い矢印)
-    \item broadcast：SVS により有効化したタグが CAM に到達するまでの遅延(\fig{SVSD_nand_nor}における青い矢印) 
-  \end{itemize}
+これに対して， IPC のしきい値はセグメントの総数が 16 までは共通で 3.5 となっているが，セグメントの総数が 32 の組み合わせにおいては，3.0 や 2.5 と最適なしきい値が低下していることがわかる．この理由を説明する．
 
-  \begin{table}[htb]
-    \caption{ウェイクアップ論理の遅延時間(ps)}
-    \footnotesize
-    \center
-      \begin{tabular}{l|l} \hline \hline
-       from tagRAM & 24.849 \\
-       SVS & 36.192 \\
-       broadcast & 105.72 \\ \hline
-    \end{tabular}
-    \label{tab:delay}
-  \end{table}
+ILP のしきい値が変化している理由は，cactusBSSN ベンチマークにおいてセグメントの総数が 32 の場合に急激に性能が低下するためである．cactusBSSN は ILP の高いベンチマークの一つで，BASE モデルにおいて IPC が 3.6 程度である．セグメントの総数が 16 以下の場合，このベンチマークは AGGRESSIVE モードにおいても大きな性能低下を起こさないが，セグメントの総数が 32 の場合にはAGGRESSIVE モードで 10\% 以上の大きな性能低下を起こす．その際，IPC は 3.3 程度（（16,2）の場合）となる．
 
-  評価の結果，その結果，SVS 信号の遅延(\fig{SVSD_nand_nor}における赤い矢印)が想定していたよりも大幅に大きかった．提案手法を用いない場合の通常の IQ におけるタグのブロードキャストの遅延時間を評価したところ，120ps 程度であったため，36p という遅延の増加は無視できないほど大きい．この原因は特定できていないが，おそらく SVSD の NAND ゲートへの入力信号の立ち上がりが遅いためではないかと予測している．
+この場合に，IPC のしきい値が 3.5 であるような例を考える．このとき，AGGRESSIVE モードでの IPC は 3.3 であるためしきい値を下回り，ILP が低いと判定される．その結果，本来 ILP が高いと評価され CONSERVATIVE モードで実行されるべきであるが，AGGRESSIVE モードで実行され，性能が低下する．実際に，IPC のしきい値が 3.5 の場合には，\fig{16_2_IPC}の cactusBSSN を見るとわかるように CONSERVATIVE モードの割合が低いことがわかる．
 
-  この問題に対しては，以下の対処方法が有効である可能性がある．
-  \begin{itemize}
-  \item タグ RAM に SVSD を配置し， SVS に変換してからブロードキャストする
-  \item ディスパッチ時にあらかじめ SVS にデコードしてタグ RAM に記録しておき，ウェイクアップ時にタグとともにブロードキャストする
-  \end{itemize}
-  これらの方法について検討し，ウェイクアップ論理の遅延増加を許容できる範囲に抑えることが今後の課題である．
-  
-\begin{figure}[htb]
+このように，セグメントの総数が多い場合には，IPC のしきい値が高い場合に，本来 ILP が高いと判定したいプログラムにおいて，AGGRESSIVE モードでの性能低下が大きく，その結果 ILP が低いと誤って判定されることがある．したがって，セグメントの総数を多くする場合には，IPC のしきい値をある程度低く設定し，ILP の誤った判定を防ぐ必要があると言える．
+
+\begin{table}[tb]
+  \caption{セグメント数ごとの SWITCH 方式のしきい値}
+  \footnotesize
+  \center
+    \begin{tabular}{c|c|c|c} \hline \hline
+    総セグメント数 & （M-seg，S-seg） & IPC & LLC MPKI \\ \hline
+    4 &（4，1） & 3.5 & 2.0 \\
+    &（2，2） & 3.5 & 2.0 \\ \hline
+    8 &（8，1） & 3.5 & 2.0 \\
+    &（4，2） & 3.5 & 2.0 \\ \hline
+    &（16，1） & 3.5 & 2.0 \\
+    16 &（8，2） & 3.5 & 2.0 \\
+    &（4，4） & 3.5 & 2.0 \\ \hline
+    &（32，1） & 2.5 & 2.0 \\
+    32 &（16，2） & 3.0 & 2.0 \\
+    &（8，4） & 3.0 & 2.0 \\ \hline
+  \end{tabular}
+  \label{tab:switch_threshold_all}
+\end{table}
+
+%（4，1）
+\begin{figure}[tb]
   \centering
-  \includegraphics[keepaspectratio, scale=.8]{SVSD_nand_nor}
-  \caption{SVSD（遅延評価用）}
-  \label{fig:SVSD_nand_nor}
+  \includegraphics[keepaspectratio, scale=.8]{4_1_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（4，1）}
+  \label{fig:4_1_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{4_1_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（4，1）}
+  \label{fig:4_1_MPKI}
+\end{figure}
+
+%（2，2）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{2_2_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（2，2）}
+  \label{fig:2_2_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{2_2_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（2，2）}
+  \label{fig:2_2_MPKI}
+\end{figure}
+
+%（8，1）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{8_1_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（8，1）}
+  \label{fig:8_1_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{8_1_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（8，1）}
+  \label{fig:8_1_MPKI}
+\end{figure}
+
+%（4，2）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{4_2_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（4，2）}
+  \label{fig:4_2_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{4_2_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（4，2）}
+  \label{fig:4_2_MPKI}
+\end{figure}
+
+%（16，1）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{16_1_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（16，1）}
+  \label{fig:16_1_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{16_1_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（16，1）}
+  \label{fig:16_1_MPKI}
+\end{figure}
+
+%（4，4）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{4_4_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（4，4）}
+  \label{fig:4_4_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{4_4_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（4，4）}
+  \label{fig:4_4_MPKI}
+\end{figure}
+
+%（32，1）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{32_1_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（32，1）}
+  \label{fig:32_1_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{32_1_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（32，1）}
+  \label{fig:32_1_MPKI}
+\end{figure}
+
+%（16，2）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{16_2_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（16，2）}
+  \label{fig:16_2_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{16_2_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（16，2）}
+  \label{fig:16_2_MPKI}
+\end{figure}
+
+%（8，4）
+\begin{figure}[tb]
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{8_4_IPC}
+  \caption{IPC を用いた SWITCH 方式の制御（8，4）}
+  \label{fig:8_4_IPC}
+
+  \centering
+  \includegraphics[keepaspectratio, scale=.8]{8_4_MPKI}
+  \caption{LLC MPKI を用いた SWITCH 方式の制御（8，4）}
+  \label{fig:8_4_MPKI}
 \end{figure}
