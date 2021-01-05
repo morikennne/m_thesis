@@ -2136,6 +2136,26 @@ FUNCTION {misc}
   if.url.std.interword.spacing
 }
 
+FUNCTION {inproceedingsjpn}
+{ std.status.using.comma
+  start.entry
+  if.url.alt.interword.spacing
+  format.authors output
+  %name.or.dash
+  format.article.title output
+  format.in.booktitle "booktitle" output.warn
+  format.howpublished "howpublished" bibinfo.check output 
+  format.organization "organization" bibinfo.check output
+  format.address "address" bibinfo.check output
+  format.pages output
+  format.date output
+  format.note output
+  format.url output
+  fin.entry
+  empty.entry.warn
+  if.url.std.interword.spacing
+}
+
 FUNCTION {patent}
 { std.status.using.comma
   start.entry

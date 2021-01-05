@@ -1,13 +1,13 @@
 
 \chapter{評価}
 \label{sec:eval}
-本章では，提案手法の評価を行う．\refsec{eval_env}で評価環境について説明し，\refsec{eval_segIQ}で提案手法によるタグ比較回数と性能低下の評価を行う．\refsec{eval_subseg}でサブ・セグメントに関する評価を説明した後，\refsec{eval_threshold}で SWITCH 方式のパラメータに関する評価を行い，\refsec{eval_ipc_comp}でセグメント数に関する評価について説明する．
+本章では，提案手法の評価を行う．\refsec{eval_env}で評価環境について説明し，\refsec{eval_segIQ}で提案手法によるタグ比較回数と性能低下の評価を行う．\refsec{eval_subseg}でサブ・セグメントに関する評価結果を述べた後，\refsec{eval_threshold}で SWITCH 方式のパラメータに関する評価を行い，\refsec{eval_ipc_comp}でセグメント数に関する評価結果について述べる．
 
 \section{評価環境}
 \label{sec:eval_env}
-評価環境について説明する．性能やタグ比較回数を評価するために，SimpleScalar v.3.0a~\cite{SimpleScalar} をベースに作成したシュミレータを使用した．評価で仮定したプロセッサ構成を\tab{base_config}に示す．
+評価環境について説明する．性能やタグ比較回数を評価するために，SimpleScalar ver.3.0a~\cite{SimpleScalar} をベースに作成したシュミレータを使用した．評価で仮定したプロセッサ構成を\tab{base_config}に示す．
 
-提案手法の に関するパラメータを，\tab{switch_config}と\tab{switch_config_subseg}に示す．\tab{switch_config} はサブ・セグメントを使用しない場合に最適なパラメータを，\tab{switch_config_subseg}はサブ・セグメントを使用する場合に最適なパラメータを示している．これらのパラメータは，\refsec{eval_threshold}及び\refsec{eval_ipc_comp}で説明する評価に基づいて決定した最適なパラメータである．
+提案手法に関するパラメータを，\tab{switch_config}と\tab{switch_config_subseg}に示す．\tab{switch_config} はサブ・セグメントを使用しない場合に最適なパラメータを，\tab{switch_config_subseg}はサブ・セグメントを使用する場合に最適なパラメータを示している．これらのパラメータは，\refsec{eval_threshold}及び\refsec{eval_ipc_comp}で説明する評価に基づいて決定した最適なパラメータである．
 
 測定ベンチマークには，SPEC CPU 2017 ベンチマークのうち，int 系 9 本と fp 系 9 本の計 18 本を使用した（gcc と wrf は，現在のところ，シミュレータでは正しく動作しなかったため，除いている）．プログラムの入力には refspeed データ・セットを用いた．ベンチマークの測定区間は，プログラムの先頭から 16B 命令をスキップした後の 100M 命令である．
 
@@ -22,7 +22,7 @@
      IQ & 128 entries，w/ age matrix \\
      Load/Store queue & 128 entries \\
      Physical registers & 300（int） + 300（fp） \\
-     Branch prediction & 16KB Perceptron predictor~\cite{Jimenez2001} \\
+     Branch prediction & 16KB perceptron predictor~\cite{Jimenez2001} \\
      & 2K-set 4-way BTB \\
      & 10-cycle misprediction penalty \\
      Function unit & 4 iALU，2 iMULT，\\
@@ -70,7 +70,7 @@
 \end{table}
 
 \subsubsection{ベンチマークの分類}
-提案手法は，プログラムの ILP や MLP に着目した制御を行う．そこで，SPEC CPU 2017 ベンチマークを ILP が高いベンチマーク，MLP が高いベンチマーク，いずれも低いベンチマークの 3 種類に分類する．ここて，ILP 及びMLP が高いベンチマークとは，次の条件を満たすベンチマークであるとした．
+提案手法は，プログラムの ILP や MLP に着目した制御を行う．そこで，SPEC CPU 2017 ベンチマークを ILP が高いベンチマーク，MLP が高いベンチマーク，いずれも低いベンチマークの 3 種類に分類する．ここで，ILP 及びMLP が高いベンチマークとは，次の条件を満たすベンチマークであるとした．
 \begin{itemize}
   \item high ILP：IPCが 3.5 以上のベンチマーク
   \item high MLP：LLC MPKI が 2.0 以上のベンチマーク
@@ -135,7 +135,7 @@ SWITCH 方式では，ILP や MLP の高いベンチマークにおいては CON
 
 SWITCH 方式の有効性に関して述べる．同図より，ILP や MLP が高い xalancbmk や imagick，lbm などのベンチマークにおいて，AGGRESSIVE では大きく性能低下しているのに対して，CONSERVATIVE では性能低下が抑制されていることが分かる．そして SWITCH では，CONSERVATIVE と同程度の性能低下にとどまっている．従って，容量効率が性能にとって重要なプログラムにおいて，SWITCH 方式によって性能低下が抑制できていることが分かる．
 
-\fig{occupancy_16_1}に各モデルでの IQ の占有率を示す．占有率とは，IQ の全エントリのうち 1 サイクルあたり使用されたエントリの割合であり，この値が BASE のそれに近いほど容量効率が低下していないことを示す．
+\fig{occupancy_16_1}に各モデルでの IQ の占有率を示す．占有率とは，IQ の全エントリのうち 1 サイクルあたり使用されたエントリ数の割合であり，この値が BASE のそれに近いほど容量効率が低下していないことを示す．
 
 同図より，AGGRESSIVE では BASE に対して占有率が大きく低下しているのに対して，CONSERVATIVE では占有率の低下がある程度抑制できていることが分かる．そして，ILP や MLP が高いベンチマークでは SWITCH 方式での占有率が CONSERVATIVE と同程度となっていることが分かる．このことからも，SWITCH 方式では，容量効率の性能に対する重要性に応じて適切にモードを選択し，容量効率の低下による性能低下を抑制できており，SWITCH 方式が有効であると言える．
 
@@ -255,7 +255,7 @@ AGGRESSIVE モードでの性能低下率に関して考える．\tab{subseg_eva
 SWITCH 方式において，ILP と MLP の高低を判定するために使用するしきい値に関する評価を行う．しきい値に関する評価は，すべてのセグメント数の組み合わせに対して行い，それぞれ最適なしきい値を決定した．本節では（8，2）の場合に関して説明し，その他のセグメント数の場合に関しては~\refapp{appendix2}にて評価結果を示す．
 
 \subsection{ILP の評価値}
-ILP を評価する値として IPC と ISR の評価を行う．評価の方針としては，まず IPC と ISR のしきい値に関して適当な値を求める．適当ななしきい値は，しきい値を変化させた場合に，ILP の高いベンチマークにおいて CONSERVATIVE モードで実行される割合を評価することによって決定する．
+ILP を評価する値として IPC と ISR の評価を行う．評価の方針としては，まず IPC と ISR のしきい値に関して適当な値を求める．適当なしきい値は，しきい値を変化させた場合に，ILP の高いベンチマークにおいて CONSERVATIVE モードで実行される割合を評価することによって決定する．
 
 その後，それぞれの評価値を利用する場合の提案手法によるタグ比較削減と性能低下を比較し，IPC と ISR のどちらがより適した評価指標か評価する．最後に，SWITCH 方式がしきい値の変化に対してどの程度敏感であるかを評価する
 
@@ -315,7 +315,7 @@ exchange2 及び fotonik3d は提案手法によって性能低下を起こさ�
   \label{fig:switch_ILP_comp}
 \end{figure}
 
-\subsubsection{IPC のしきい値の敏感性に関する評価}
+\subsubsection{IPC のしきい値への感度に関する評価}
 IPC のしきい値を最適と判断された 3.5 付近で変化させた場合の提案手法による性能低下とタグ比較回数に関して評価する．セグメント数は（8，2）である．また，ILP による SWITCH 方式の制御のみ行い，MLP による制御は行っていない．
 
 \fig{IPC_sensitivity_performance}に性能低下を，\fig{IPC_sensitivity_comp}にタグ比較回数を示す．同図より，多くのベンチマークではしきい値が変化しても性能低下率やタグ比較回数は大きく変化しないことがわかる．したがって，SWITCH 方式は基本的に IPC のしきい値に対して鈍感であり，今回測定したベンチマーク以外のプログラムにおいても有効性は高いと考えられる．
@@ -352,7 +352,7 @@ MLP の高いベンチマークに関して考える．omnetpp と lbm におい
 
 MLP が高い場合は CONSERVATIVE モードで実行することが望ましい．従って，LLC MPKI のしきい値は，2 程度が適当であるといえる．
 
-\subsubsection{LLC MPKI のしきい値の敏感性}
+\subsubsection{LLC MPKI のしきい値への感度に関する評価}
 LLC MPKI のしきい値を最適と判断された 2.0 付近で変化させた場合の，提案手法による性能低下とタグ比較回数に関して評価する．セグメント数は（8，2）である．なお，MLP による SWITCH 方式の制御のみ行い，ILP による制御は行っていない．
 
 \fig{MPKI_sensitivity_performance}に性能低下を，\fig{MPKI_sensitivity_comp}にタグ比較回数を示す．同図より，LLC MPKI のしきい値が変化しても性能低下率やタグ比較回数は大きく変化しないことがわかる．したがって，SWITCH 方式は基本的に LLC MPKI のしきい値に対して鈍感であり，今回評価したベンチマーク以外のプログラムにおいても，有効性は高いと考えられる．
