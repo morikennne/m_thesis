@@ -248,9 +248,9 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 153--154
 ) [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] (./src/appendix3.tex
 付 録 C  
 [78] [79]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 51--52
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 54--55
  [][] 
-) [80] (./src/publication.tex) [81] (./src/acknowledgement.tex) [82]
+) [80] [81] (./src/publication.tex) [82] (./src/acknowledgement.tex) [83]
   参考文献
 (./main.bbl
 
@@ -261,7 +261,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 26.
 
-[83] [84] [85] [86]) [87] (./main.aux (./src/abstract.aux)
+[84] [85] [86] [87]) [88] (./main.aux (./src/abstract.aux)
 (./src/introduction.aux) (./src/related_work.aux) (./src/basic_IQ.aux)
 (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux) (./src/summary.aux)
 (./src/appendix1.aux) (./src/appendix2.aux) (./src/appendix3.aux)
@@ -271,5 +271,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (91 pages, 254724 bytes).
+Output written on main.dvi (92 pages, 255428 bytes).
 Transcript written on main.log.

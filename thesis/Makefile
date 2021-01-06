@@ -29,3 +29,7 @@ clean:
 	rm -f $(foreach suffix,$(REMOVE_SUFFIX_LIST),*.$(suffix))
 	rm -f src/*.aux
 	rm -f figure/*.xbb
+
+# make tex source text for submmit
+src:
+	python3 summrize_tex_src.py
