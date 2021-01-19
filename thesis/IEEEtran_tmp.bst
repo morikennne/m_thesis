@@ -194,11 +194,12 @@ FUNCTION {bbl.and}{ "and" }
 FUNCTION {bbl.etal}{ "et~al." }
 FUNCTION {bbl.editors}{ "eds." }
 FUNCTION {bbl.editor}{ "ed." }
-FUNCTION {bbl.edition}{ "ed." }
+FUNCTION {bbl.edition}{ "edition" }
 FUNCTION {bbl.volume}{ "vol." }
 FUNCTION {bbl.of}{ "of" }
 FUNCTION {bbl.number}{ "no." }
 FUNCTION {bbl.in}{ "in" }
+FUNCTION {bbl.injpn}{ "" } % add by Mori:used for inproceedingsjpn
 FUNCTION {bbl.pages}{ "pp." }
 FUNCTION {bbl.page}{ "p." }
 FUNCTION {bbl.chapter}{ "ch." }
@@ -216,7 +217,7 @@ FUNCTION {bbl.st}{ "st" }
 FUNCTION {bbl.nd}{ "nd" }
 FUNCTION {bbl.rd}{ "rd" }
 FUNCTION {bbl.th}{ "th" }
-
+FUNCTION {bbl.comma}{ "," } % add by Mori
 
 % This is the LaTeX spacer that is used when a larger than normal space
 % is called for (such as just before the address:publisher).
@@ -1360,7 +1361,7 @@ FUNCTION {format.edition}
         { "l" }
       if$ change.case$
       "edition" bibinfo.check
-      "~" * bbl.edition *
+      "~" * bbl.edition * 
       cap.status.std
     }
   if$
@@ -1410,6 +1411,25 @@ FUNCTION {format.in.booktitle.edition}
     }
   if$
 }
+
+% add by Mori: used for inproceedingsjpn
+FUNCTION {format.in.booktitle.jpn}
+{ booktitle "booktitle" bibinfo.check duplicate$ empty$ 'skip$
+    { this.to.prev.status
+      this.status.std
+      select.language
+      intype missing$
+        { %emphasize
+          bbl.injpn "" *
+        }
+        { intype " " * }
+      if$
+      swap$ *
+      cap.status.std
+    }
+  if$
+}
+
 
 FUNCTION {format.article.title}
 { title duplicate$ empty$ 'skip$
@@ -1471,6 +1491,26 @@ FUNCTION {format.book.title.edition}
     }
   if$
 }
+
+
+% add by Mori: used for book
+FUNCTION {format.book.title.edition.tmp}
+{ title "title" bibinfo.check duplicate$ empty$ 'skip$
+    { this.to.prev.status
+      this.status.std
+      select.language
+      intype missing$
+        { emphasize
+          bbl.injpn "" *
+        }
+        { intype " " * }
+      if$
+      swap$ *
+      cap.status.std
+    }
+  if$
+}
+
 
 FUNCTION {format.book.title}
 { title "title" bibinfo.check
@@ -1964,7 +2004,8 @@ FUNCTION {book}
     { format.authors output.nonnull }
   if$
   %name.or.dash
-  format.book.title.edition output
+  format.book.title.edition.tmp output
+  format.edition output
   format.series output
   author empty$
     { skip$ }
@@ -1979,6 +2020,30 @@ FUNCTION {book}
   if.url.std.interword.spacing
 }
 
+% Mori: original book
+FUNCTION {bookOrig}
+{ std.status.using.comma
+  start.entry
+  if.url.alt.interword.spacing
+  author empty$
+    { format.editors "author and editor" output.warn }
+    { format.authors output.nonnull }
+  if$
+  %name.or.dash
+  format.book.title.edition output
+  format.series output
+  author empty$
+    { skip$ }
+    { format.editors output }
+  if$
+  format.address.publisher.date output
+  format.volume output
+  format.number output
+  format.note output
+  format.url output
+  fin.entry
+  if.url.std.interword.spacing
+}
 FUNCTION {booklet}
 { std.status.using.comma
   start.entry
@@ -2143,7 +2208,7 @@ FUNCTION {inproceedingsjpn}
   format.authors output
   %name.or.dash
   format.article.title output
-  format.in.booktitle "booktitle" output.warn
+  format.in.booktitle.jpn "booktitle" output.warn
   format.howpublished "howpublished" bibinfo.check output 
   format.organization "organization" bibinfo.check output
   format.address "address" bibinfo.check output
