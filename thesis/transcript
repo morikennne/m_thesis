@@ -27,7 +27,7 @@ This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/D
 entering extended mode
 (./main.tex
 pLaTeX2e <2017/10/28>+4 (based on LaTeX2e <2017-04-15>)
-Babel <3.18> and hyphenation patterns for 26 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 30 language(s) loaded.
 (./jmyreport.cls
 Document Class: jmyreport 2020/12/03 v1.0 my new class based on jreport
 (/usr/share/texlive/texmf-dist/tex/platex/base/jsize12.clo)) (./a4j.sty)
@@ -65,14 +65,26 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (./main.aux
-(./src/abstract.aux) (./src/introduction.aux) (./src/related_work.aux)
-(./src/basic_IQ.aux) (./src/segment_IQ.aux) (./src/switch.aux) (./src/eval.aux)
-(./src/summary.aux) (./src/appendix1.aux) (./src/appendix2.aux)
-(./src/appendix3.aux) (./src/publication.aux) (./src/acknowledgement.aux))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3dvipdfmx.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty))
+(./main.aux (./src/abstract.aux) (./src/introduction.aux)
+(./src/related_work.aux) (./src/basic_IQ.aux) (./src/segment_IQ.aux)
+(./src/switch.aux) (./src/eval.aux) (./src/summary.aux) (./src/appendix1.aux)
+(./src/appendix2.aux) (./src/appendix3.aux) (./src/publication.aux)
+(./src/acknowledgement.aux))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./main.out) (./main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
+-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [0]
 (./src/abstract.tex) [1] (./main.toc [2]) [3] (./src/introduction.tex
@@ -105,23 +117,26 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 69--70
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 76--77
  [][] 
-[17] [18] [19]
+[17] [18]
+Overfull \hbox (5.95605pt too wide) in paragraph at lines 104--112
+ [] 
+[19]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 125--126
  [][] 
 [20] [21] [22]
-Overfull \hbox (18.62187pt too wide) in paragraph at lines 157--165
- [][][] 
+Overfull \hbox (19.82185pt too wide) in paragraph at lines 157--165
+ [] 
 [23] [24]) [25] (./src/switch.tex
 第 5 章
 
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 7--8
  [][] 
 [26] [27] [28] [29] [30]
-Overfull \hbox (32.84825pt too wide) in paragraph at lines 84--92
- [][][] 
+Overfull \hbox (34.04823pt too wide) in paragraph at lines 84--92
+ [] 
 [31]
-Overfull \hbox (32.84825pt too wide) in paragraph at lines 115--123
- [][][] 
+Overfull \hbox (34.04823pt too wide) in paragraph at lines 115--123
+ [] 
 [32] [33] [34]
 Overfull \hbox (15.92342pt too wide) in paragraph at lines 160--161
  [][] 
@@ -248,7 +263,7 @@ Overfull \hbox (15.92342pt too wide) in paragraph at lines 153--154
 ) [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] (./src/appendix3.tex
 付 録 C  
 [78] [79]
-Overfull \hbox (15.92342pt too wide) in paragraph at lines 54--55
+Overfull \hbox (15.92342pt too wide) in paragraph at lines 71--72
  [][] 
 ) [80] [81] (./src/publication.tex) [82] (./src/acknowledgement.tex) [83]
   参考文献
@@ -271,5 +286,5 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (92 pages, 255420 bytes).
+Output written on main.dvi (92 pages, 256784 bytes).
 Transcript written on main.log.
